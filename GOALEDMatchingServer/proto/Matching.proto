@@ -1,0 +1,95 @@
+syntax="proto3";
+
+package MatchingService;
+
+option go_package = "../go/pb";
+
+enum RoomStatus {
+  WAITING = 0;
+  PLAYING = 1;
+}
+
+message Player {
+  string id = 1;
+  string name = 2;
+}
+
+message Room {
+  string id = 1;
+  string name = 2;
+  string password = 3;
+  RoomStatus status = 4;
+  int32 max_player = 5;
+  int32 current_player = 6;
+  repeated Player players = 7;
+}
+
+service MatchingService {
+  rpc GetPlayerId (GetPlayerIdRequest) returns (GetPlayerIdResponse) {}
+  rpc GetPublicRoom(GetPublicRoomRequest) returns (GetPublicRoomResponse) {}
+  rpc CreatePublicRoom(CreatePublicRoomRequest) returns (CreatePublicRoomResponse) {}
+  rpc CreatePrivateRoom(CreatePrivateRoomRequest) returns (CreatePrivateRoomResponse) {}
+  rpc JoinPublicRoom(JoinPublicRoomRequest) returns (JoinPublicRoomResponse) {}
+  rpc JoinPrivateRoom(JoinPrivateRoomRequest) returns (JoinPrivateRoomResponse) {}
+  rpc LeaveRoom(LeaveRoomRequest) returns (LeaveRoomResponse) {}
+}
+
+message GetPlayerIdRequest {
+}
+
+message GetPlayerIdResponse {
+  string player_id = 1;
+}
+
+message GetPublicRoomRequest {
+}
+
+message GetPublicRoomResponse {
+  repeated Room rooms = 1;
+}
+
+message CreatePublicRoomRequest {
+  string name = 1;
+  int32 max_player = 2;
+}
+
+message CreatePublicRoomResponse {
+  Room room = 1;
+}
+
+message CreatePrivateRoomRequest {
+  string name = 1;
+  string password = 2;
+  int32 max_player = 3;
+}
+
+message CreatePrivateRoomResponse {
+  Room room = 1;
+}
+
+message JoinPublicRoomRequest {
+  string room_id = 1;
+  Player player = 2;
+}
+
+message JoinPublicRoomResponse {
+  Room room = 1;
+}
+
+message JoinPrivateRoomRequest {
+  string password = 1;
+  Player player = 2;
+}
+
+message JoinPrivateRoomResponse {
+  Room room = 1;
+}
+
+message LeaveRoomRequest {
+  string room_id = 1;
+  string player_id = 2;
+}
+
+message LeaveRoomResponse {
+  bool success = 1;
+}
