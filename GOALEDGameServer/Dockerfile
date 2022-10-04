@@ -1,4 +1,4 @@
-FROM golang:1.19
+FROM --platform=linux/amd64 golang:1.19
 
 RUN apt update
 RUN apt-get install unzip

@@ -1,0 +1,61 @@
+syntax="proto3";
+
+package GameService;
+
+option go_package = "../go/pb";
+
+message PlayerData {
+  string id = 1;
+  repeated string key = 2;
+  repeated string value = 3;
+}
+
+message Room {
+  string id = 1;
+  string name = 2;
+  string owner = 3;
+  repeated string players = 4;
+}
+
+message Vec3 {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message Object{
+  string id = 1;
+  string owner = 2;
+  string prefub = 3;
+  Vec3 position = 4;
+  Vec3 rotation = 5;
+  Vec3 scale = 6;
+  string rpc = 7;
+  map<string, string> args = 8;
+}
+
+service GameService {
+  rpc CreateRoom(Room) returns (Room) {}
+  rpc SyncPlayerData(SyncPlayerDataRequest) returns (stream PlayerData) {}
+  rpc SendPlayerData(stream PlayerData) returns (SendPlayerDataResponse) {}
+  rpc SyncObject(SyncObjectRequest) returns (stream Object) {}
+  rpc SendObject(stream Object) returns (SendObjectResponse) {}
+}
+
+message SyncPlayerDataRequest {
+  string room_id = 1;
+  string player = 2;
+}
+
+message SendPlayerDataResponse {
+  PlayerData data = 1;
+}
+
+message SyncObjectRequest {
+  string player_id = 1;
+  string room_id = 2;
+}
+
+message SendObjectResponse {
+  string message = 1;
+}
