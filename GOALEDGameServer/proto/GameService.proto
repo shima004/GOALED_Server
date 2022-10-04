@@ -14,7 +14,7 @@ message Room {
   string id = 1;
   string name = 2;
   string owner = 3;
-  repeated string players = 4;
+  repeated string player_ids = 4;
 }
 
 message Vec3 {
@@ -44,16 +44,17 @@ service GameService {
 
 message SyncPlayerDataRequest {
   string room_id = 1;
-  string player = 2;
+  string player_id = 2;
 }
 
 message SendPlayerDataResponse {
-  PlayerData data = 1;
+  string player_id = 1;
+  PlayerData data = 2;
 }
 
 message SyncObjectRequest {
-  string player_id = 1;
-  string room_id = 2;
+  string room_id = 1;
+  string player_id = 2;
 }
 
 message SendObjectResponse {

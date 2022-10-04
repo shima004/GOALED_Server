@@ -25,39 +25,40 @@ namespace GameService {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFHYW1lU2VydmljZS5wcm90bxILR2FtZVNlcnZpY2UiNAoKUGxheWVyRGF0",
-            "YRIKCgJpZBgBIAEoCRILCgNrZXkYAiADKAkSDQoFdmFsdWUYAyADKAkiQAoE",
+            "YRIKCgJpZBgBIAEoCRILCgNrZXkYAiADKAkSDQoFdmFsdWUYAyADKAkiQwoE",
             "Um9vbRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEg0KBW93bmVyGAMgASgJ",
-            "Eg8KB3BsYXllcnMYBCADKAkiJwoEVmVjMxIJCgF4GAEgASgCEgkKAXkYAiAB",
-            "KAISCQoBehgDIAEoAiKGAgoGT2JqZWN0EgoKAmlkGAEgASgJEg0KBW93bmVy",
-            "GAIgASgJEg4KBnByZWZ1YhgDIAEoCRIjCghwb3NpdGlvbhgEIAEoCzIRLkdh",
-            "bWVTZXJ2aWNlLlZlYzMSIwoIcm90YXRpb24YBSABKAsyES5HYW1lU2Vydmlj",
-            "ZS5WZWMzEiAKBXNjYWxlGAYgASgLMhEuR2FtZVNlcnZpY2UuVmVjMxILCgNy",
-            "cGMYByABKAkSKwoEYXJncxgIIAMoCzIdLkdhbWVTZXJ2aWNlLk9iamVjdC5B",
-            "cmdzRW50cnkaKwoJQXJnc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgC",
-            "IAEoCToCOAEiNQoVU3luY1BsYXllckRhdGFSZXF1ZXN0EgwKBHJvb20YASAB",
-            "KAkSDgoGcGxheWVyGAIgASgJIj8KFlNlbmRQbGF5ZXJEYXRhUmVzcG9uc2US",
-            "JQoEZGF0YRgBIAMoCzIXLkdhbWVTZXJ2aWNlLlBsYXllckRhdGEiNwoRU3lu",
-            "Y09iamVjdFJlcXVlc3QSEQoJcGxheWVyX2lkGAEgASgJEg8KB3Jvb21faWQY",
-            "AiABKAkiJQoSU2VuZE9iamVjdFJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAky",
-            "+QIKC0dhbWVTZXJ2aWNlEjQKCkNyZWF0ZVJvb20SES5HYW1lU2VydmljZS5S",
-            "b29tGhEuR2FtZVNlcnZpY2UuUm9vbSIAElEKDlN5bmNQbGF5ZXJEYXRhEiIu",
-            "R2FtZVNlcnZpY2UuU3luY1BsYXllckRhdGFSZXF1ZXN0GhcuR2FtZVNlcnZp",
-            "Y2UuUGxheWVyRGF0YSIAMAESUgoOU2VuZFBsYXllckRhdGESFy5HYW1lU2Vy",
-            "dmljZS5QbGF5ZXJEYXRhGiMuR2FtZVNlcnZpY2UuU2VuZFBsYXllckRhdGFS",
-            "ZXNwb25zZSIAKAESRQoKU3luY09iamVjdBIeLkdhbWVTZXJ2aWNlLlN5bmNP",
-            "YmplY3RSZXF1ZXN0GhMuR2FtZVNlcnZpY2UuT2JqZWN0IgAwARJGCgpTZW5k",
-            "T2JqZWN0EhMuR2FtZVNlcnZpY2UuT2JqZWN0Gh8uR2FtZVNlcnZpY2UuU2Vu",
-            "ZE9iamVjdFJlc3BvbnNlIgAoAUIKWgguLi9nby9wYmIGcHJvdG8z"));
+            "EhIKCnBsYXllcl9pZHMYBCADKAkiJwoEVmVjMxIJCgF4GAEgASgCEgkKAXkY",
+            "AiABKAISCQoBehgDIAEoAiKGAgoGT2JqZWN0EgoKAmlkGAEgASgJEg0KBW93",
+            "bmVyGAIgASgJEg4KBnByZWZ1YhgDIAEoCRIjCghwb3NpdGlvbhgEIAEoCzIR",
+            "LkdhbWVTZXJ2aWNlLlZlYzMSIwoIcm90YXRpb24YBSABKAsyES5HYW1lU2Vy",
+            "dmljZS5WZWMzEiAKBXNjYWxlGAYgASgLMhEuR2FtZVNlcnZpY2UuVmVjMxIL",
+            "CgNycGMYByABKAkSKwoEYXJncxgIIAMoCzIdLkdhbWVTZXJ2aWNlLk9iamVj",
+            "dC5BcmdzRW50cnkaKwoJQXJnc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1",
+            "ZRgCIAEoCToCOAEiOwoVU3luY1BsYXllckRhdGFSZXF1ZXN0Eg8KB3Jvb21f",
+            "aWQYASABKAkSEQoJcGxheWVyX2lkGAIgASgJIlIKFlNlbmRQbGF5ZXJEYXRh",
+            "UmVzcG9uc2USEQoJcGxheWVyX2lkGAEgASgJEiUKBGRhdGEYAiABKAsyFy5H",
+            "YW1lU2VydmljZS5QbGF5ZXJEYXRhIjcKEVN5bmNPYmplY3RSZXF1ZXN0Eg8K",
+            "B3Jvb21faWQYASABKAkSEQoJcGxheWVyX2lkGAIgASgJIiUKElNlbmRPYmpl",
+            "Y3RSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJMvkCCgtHYW1lU2VydmljZRI0",
+            "CgpDcmVhdGVSb29tEhEuR2FtZVNlcnZpY2UuUm9vbRoRLkdhbWVTZXJ2aWNl",
+            "LlJvb20iABJRCg5TeW5jUGxheWVyRGF0YRIiLkdhbWVTZXJ2aWNlLlN5bmNQ",
+            "bGF5ZXJEYXRhUmVxdWVzdBoXLkdhbWVTZXJ2aWNlLlBsYXllckRhdGEiADAB",
+            "ElIKDlNlbmRQbGF5ZXJEYXRhEhcuR2FtZVNlcnZpY2UuUGxheWVyRGF0YRoj",
+            "LkdhbWVTZXJ2aWNlLlNlbmRQbGF5ZXJEYXRhUmVzcG9uc2UiACgBEkUKClN5",
+            "bmNPYmplY3QSHi5HYW1lU2VydmljZS5TeW5jT2JqZWN0UmVxdWVzdBoTLkdh",
+            "bWVTZXJ2aWNlLk9iamVjdCIAMAESRgoKU2VuZE9iamVjdBITLkdhbWVTZXJ2",
+            "aWNlLk9iamVjdBofLkdhbWVTZXJ2aWNlLlNlbmRPYmplY3RSZXNwb25zZSIA",
+            "KAFCCloILi4vZ28vcGJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::GameService.PlayerData), global::GameService.PlayerData.Parser, new[]{ "Id", "Key", "Value" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GameService.Room), global::GameService.Room.Parser, new[]{ "Id", "Name", "Owner", "Players" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GameService.Room), global::GameService.Room.Parser, new[]{ "Id", "Name", "Owner", "PlayerIds" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GameService.Vec3), global::GameService.Vec3.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GameService.Object), global::GameService.Object.Parser, new[]{ "Id", "Owner", "Prefub", "Position", "Rotation", "Scale", "Rpc", "Args" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GameService.SyncPlayerDataRequest), global::GameService.SyncPlayerDataRequest.Parser, new[]{ "Room", "Player" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GameService.SendPlayerDataResponse), global::GameService.SendPlayerDataResponse.Parser, new[]{ "Data" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GameService.SyncObjectRequest), global::GameService.SyncObjectRequest.Parser, new[]{ "PlayerId", "RoomId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GameService.SyncPlayerDataRequest), global::GameService.SyncPlayerDataRequest.Parser, new[]{ "RoomId", "PlayerId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GameService.SendPlayerDataResponse), global::GameService.SendPlayerDataResponse.Parser, new[]{ "PlayerId", "Data" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GameService.SyncObjectRequest), global::GameService.SyncObjectRequest.Parser, new[]{ "RoomId", "PlayerId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GameService.SendObjectResponse), global::GameService.SendObjectResponse.Parser, new[]{ "Message" }, null, null, null, null)
           }));
     }
@@ -343,7 +344,7 @@ namespace GameService {
       id_ = other.id_;
       name_ = other.name_;
       owner_ = other.owner_;
-      players_ = other.players_.Clone();
+      playerIds_ = other.playerIds_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -389,15 +390,15 @@ namespace GameService {
       }
     }
 
-    /// <summary>Field number for the "players" field.</summary>
-    public const int PlayersFieldNumber = 4;
-    private static readonly pb::FieldCodec<string> _repeated_players_codec
+    /// <summary>Field number for the "player_ids" field.</summary>
+    public const int PlayerIdsFieldNumber = 4;
+    private static readonly pb::FieldCodec<string> _repeated_playerIds_codec
         = pb::FieldCodec.ForString(34);
-    private readonly pbc::RepeatedField<string> players_ = new pbc::RepeatedField<string>();
+    private readonly pbc::RepeatedField<string> playerIds_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> Players {
-      get { return players_; }
+    public pbc::RepeatedField<string> PlayerIds {
+      get { return playerIds_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -418,7 +419,7 @@ namespace GameService {
       if (Id != other.Id) return false;
       if (Name != other.Name) return false;
       if (Owner != other.Owner) return false;
-      if(!players_.Equals(other.players_)) return false;
+      if(!playerIds_.Equals(other.playerIds_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -429,7 +430,7 @@ namespace GameService {
       if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Owner.Length != 0) hash ^= Owner.GetHashCode();
-      hash ^= players_.GetHashCode();
+      hash ^= playerIds_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -460,7 +461,7 @@ namespace GameService {
         output.WriteRawTag(26);
         output.WriteString(Owner);
       }
-      players_.WriteTo(output, _repeated_players_codec);
+      playerIds_.WriteTo(output, _repeated_playerIds_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -483,7 +484,7 @@ namespace GameService {
         output.WriteRawTag(26);
         output.WriteString(Owner);
       }
-      players_.WriteTo(ref output, _repeated_players_codec);
+      playerIds_.WriteTo(ref output, _repeated_playerIds_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -503,7 +504,7 @@ namespace GameService {
       if (Owner.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Owner);
       }
-      size += players_.CalculateSize(_repeated_players_codec);
+      size += playerIds_.CalculateSize(_repeated_playerIds_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -525,7 +526,7 @@ namespace GameService {
       if (other.Owner.Length != 0) {
         Owner = other.Owner;
       }
-      players_.Add(other.players_);
+      playerIds_.Add(other.playerIds_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -554,7 +555,7 @@ namespace GameService {
             break;
           }
           case 34: {
-            players_.AddEntriesFrom(input, _repeated_players_codec);
+            playerIds_.AddEntriesFrom(input, _repeated_playerIds_codec);
             break;
           }
         }
@@ -585,7 +586,7 @@ namespace GameService {
             break;
           }
           case 34: {
-            players_.AddEntriesFrom(ref input, _repeated_players_codec);
+            playerIds_.AddEntriesFrom(ref input, _repeated_playerIds_codec);
             break;
           }
         }
@@ -1356,8 +1357,8 @@ namespace GameService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SyncPlayerDataRequest(SyncPlayerDataRequest other) : this() {
-      room_ = other.room_;
-      player_ = other.player_;
+      roomId_ = other.roomId_;
+      playerId_ = other.playerId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1367,27 +1368,27 @@ namespace GameService {
       return new SyncPlayerDataRequest(this);
     }
 
-    /// <summary>Field number for the "room" field.</summary>
-    public const int RoomFieldNumber = 1;
-    private string room_ = "";
+    /// <summary>Field number for the "room_id" field.</summary>
+    public const int RoomIdFieldNumber = 1;
+    private string roomId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Room {
-      get { return room_; }
+    public string RoomId {
+      get { return roomId_; }
       set {
-        room_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        roomId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "player" field.</summary>
-    public const int PlayerFieldNumber = 2;
-    private string player_ = "";
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 2;
+    private string playerId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Player {
-      get { return player_; }
+    public string PlayerId {
+      get { return playerId_; }
       set {
-        player_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        playerId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1406,8 +1407,8 @@ namespace GameService {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Room != other.Room) return false;
-      if (Player != other.Player) return false;
+      if (RoomId != other.RoomId) return false;
+      if (PlayerId != other.PlayerId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1415,8 +1416,8 @@ namespace GameService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Room.Length != 0) hash ^= Room.GetHashCode();
-      if (Player.Length != 0) hash ^= Player.GetHashCode();
+      if (RoomId.Length != 0) hash ^= RoomId.GetHashCode();
+      if (PlayerId.Length != 0) hash ^= PlayerId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1435,13 +1436,13 @@ namespace GameService {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Room.Length != 0) {
+      if (RoomId.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Room);
+        output.WriteString(RoomId);
       }
-      if (Player.Length != 0) {
+      if (PlayerId.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Player);
+        output.WriteString(PlayerId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1453,13 +1454,13 @@ namespace GameService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Room.Length != 0) {
+      if (RoomId.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Room);
+        output.WriteString(RoomId);
       }
-      if (Player.Length != 0) {
+      if (PlayerId.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Player);
+        output.WriteString(PlayerId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1471,11 +1472,11 @@ namespace GameService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Room.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Room);
+      if (RoomId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RoomId);
       }
-      if (Player.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Player);
+      if (PlayerId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PlayerId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1489,11 +1490,11 @@ namespace GameService {
       if (other == null) {
         return;
       }
-      if (other.Room.Length != 0) {
-        Room = other.Room;
+      if (other.RoomId.Length != 0) {
+        RoomId = other.RoomId;
       }
-      if (other.Player.Length != 0) {
-        Player = other.Player;
+      if (other.PlayerId.Length != 0) {
+        PlayerId = other.PlayerId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1511,11 +1512,11 @@ namespace GameService {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Room = input.ReadString();
+            RoomId = input.ReadString();
             break;
           }
           case 18: {
-            Player = input.ReadString();
+            PlayerId = input.ReadString();
             break;
           }
         }
@@ -1534,11 +1535,11 @@ namespace GameService {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Room = input.ReadString();
+            RoomId = input.ReadString();
             break;
           }
           case 18: {
-            Player = input.ReadString();
+            PlayerId = input.ReadString();
             break;
           }
         }
@@ -1582,7 +1583,8 @@ namespace GameService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SendPlayerDataResponse(SendPlayerDataResponse other) : this() {
-      data_ = other.data_.Clone();
+      playerId_ = other.playerId_;
+      data_ = other.data_ != null ? other.data_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1592,15 +1594,28 @@ namespace GameService {
       return new SendPlayerDataResponse(this);
     }
 
-    /// <summary>Field number for the "data" field.</summary>
-    public const int DataFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::GameService.PlayerData> _repeated_data_codec
-        = pb::FieldCodec.ForMessage(10, global::GameService.PlayerData.Parser);
-    private readonly pbc::RepeatedField<global::GameService.PlayerData> data_ = new pbc::RepeatedField<global::GameService.PlayerData>();
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 1;
+    private string playerId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::GameService.PlayerData> Data {
+    public string PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "data" field.</summary>
+    public const int DataFieldNumber = 2;
+    private global::GameService.PlayerData data_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::GameService.PlayerData Data {
       get { return data_; }
+      set {
+        data_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1618,7 +1633,8 @@ namespace GameService {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!data_.Equals(other.data_)) return false;
+      if (PlayerId != other.PlayerId) return false;
+      if (!object.Equals(Data, other.Data)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1626,7 +1642,8 @@ namespace GameService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= data_.GetHashCode();
+      if (PlayerId.Length != 0) hash ^= PlayerId.GetHashCode();
+      if (data_ != null) hash ^= Data.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1645,7 +1662,14 @@ namespace GameService {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      data_.WriteTo(output, _repeated_data_codec);
+      if (PlayerId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(PlayerId);
+      }
+      if (data_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Data);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1656,7 +1680,14 @@ namespace GameService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      data_.WriteTo(ref output, _repeated_data_codec);
+      if (PlayerId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(PlayerId);
+      }
+      if (data_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Data);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1667,7 +1698,12 @@ namespace GameService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += data_.CalculateSize(_repeated_data_codec);
+      if (PlayerId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PlayerId);
+      }
+      if (data_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Data);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1680,7 +1716,15 @@ namespace GameService {
       if (other == null) {
         return;
       }
-      data_.Add(other.data_);
+      if (other.PlayerId.Length != 0) {
+        PlayerId = other.PlayerId;
+      }
+      if (other.data_ != null) {
+        if (data_ == null) {
+          Data = new global::GameService.PlayerData();
+        }
+        Data.MergeFrom(other.Data);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1697,7 +1741,14 @@ namespace GameService {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            data_.AddEntriesFrom(input, _repeated_data_codec);
+            PlayerId = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (data_ == null) {
+              Data = new global::GameService.PlayerData();
+            }
+            input.ReadMessage(Data);
             break;
           }
         }
@@ -1716,7 +1767,14 @@ namespace GameService {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            data_.AddEntriesFrom(ref input, _repeated_data_codec);
+            PlayerId = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (data_ == null) {
+              Data = new global::GameService.PlayerData();
+            }
+            input.ReadMessage(Data);
             break;
           }
         }
@@ -1760,8 +1818,8 @@ namespace GameService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SyncObjectRequest(SyncObjectRequest other) : this() {
-      playerId_ = other.playerId_;
       roomId_ = other.roomId_;
+      playerId_ = other.playerId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1771,20 +1829,8 @@ namespace GameService {
       return new SyncObjectRequest(this);
     }
 
-    /// <summary>Field number for the "player_id" field.</summary>
-    public const int PlayerIdFieldNumber = 1;
-    private string playerId_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string PlayerId {
-      get { return playerId_; }
-      set {
-        playerId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "room_id" field.</summary>
-    public const int RoomIdFieldNumber = 2;
+    public const int RoomIdFieldNumber = 1;
     private string roomId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1792,6 +1838,18 @@ namespace GameService {
       get { return roomId_; }
       set {
         roomId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 2;
+    private string playerId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1810,8 +1868,8 @@ namespace GameService {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PlayerId != other.PlayerId) return false;
       if (RoomId != other.RoomId) return false;
+      if (PlayerId != other.PlayerId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1819,8 +1877,8 @@ namespace GameService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PlayerId.Length != 0) hash ^= PlayerId.GetHashCode();
       if (RoomId.Length != 0) hash ^= RoomId.GetHashCode();
+      if (PlayerId.Length != 0) hash ^= PlayerId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1839,13 +1897,13 @@ namespace GameService {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PlayerId.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(PlayerId);
-      }
       if (RoomId.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteString(RoomId);
+      }
+      if (PlayerId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PlayerId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1857,13 +1915,13 @@ namespace GameService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PlayerId.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(PlayerId);
-      }
       if (RoomId.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteString(RoomId);
+      }
+      if (PlayerId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PlayerId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1875,11 +1933,11 @@ namespace GameService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PlayerId.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(PlayerId);
-      }
       if (RoomId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(RoomId);
+      }
+      if (PlayerId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PlayerId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1893,11 +1951,11 @@ namespace GameService {
       if (other == null) {
         return;
       }
-      if (other.PlayerId.Length != 0) {
-        PlayerId = other.PlayerId;
-      }
       if (other.RoomId.Length != 0) {
         RoomId = other.RoomId;
+      }
+      if (other.PlayerId.Length != 0) {
+        PlayerId = other.PlayerId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1915,11 +1973,11 @@ namespace GameService {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            PlayerId = input.ReadString();
+            RoomId = input.ReadString();
             break;
           }
           case 18: {
-            RoomId = input.ReadString();
+            PlayerId = input.ReadString();
             break;
           }
         }
@@ -1938,11 +1996,11 @@ namespace GameService {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            PlayerId = input.ReadString();
+            RoomId = input.ReadString();
             break;
           }
           case 18: {
-            RoomId = input.ReadString();
+            PlayerId = input.ReadString();
             break;
           }
         }
