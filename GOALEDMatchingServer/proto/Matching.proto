@@ -17,11 +17,12 @@ message Player {
 message Room {
   string id = 1;
   string name = 2;
-  string password = 3;
-  RoomStatus status = 4;
-  int32 max_player = 5;
-  int32 current_player = 6;
-  repeated Player players = 7;
+  string owner = 3;
+  string password = 4;
+  RoomStatus status = 5;
+  int32 max_player = 6;
+  int32 current_player = 7;
+  repeated Player players = 8;
 }
 
 service MatchingService {
@@ -32,6 +33,8 @@ service MatchingService {
   rpc JoinPublicRoom(JoinPublicRoomRequest) returns (JoinPublicRoomResponse) {}
   rpc JoinPrivateRoom(JoinPrivateRoomRequest) returns (JoinPrivateRoomResponse) {}
   rpc LeaveRoom(LeaveRoomRequest) returns (LeaveRoomResponse) {}
+  rpc StartGame(StartGameRequest) returns (StartGameResponse) {}
+  rpc GetStartGameStream(GetStartGameStreamRequest) returns (stream GetStartGameStreamResponse) {}
 }
 
 message GetPlayerIdRequest {
@@ -91,5 +94,23 @@ message LeaveRoomRequest {
 }
 
 message LeaveRoomResponse {
+  bool success = 1;
+}
+
+message StartGameRequest {
+  string room_id = 1;
+  string player_id = 2;
+}
+
+message StartGameResponse {
+  bool success = 1;
+}
+
+message GetStartGameStreamRequest {
+  string room_id = 1;
+  string player_id = 2;
+}
+
+message GetStartGameStreamResponse {
   bool success = 1;
 }

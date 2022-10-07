@@ -8,7 +8,7 @@ import (
 type SyncStreamsModel struct {
 	ObjectStream     map[string]pb.GameService_SyncObjectServer
 	PlayerDataStream map[string]pb.GameService_SyncPlayerDataServer
-	DoneChannel      map[string]chan struct{}
+	DoneChannels     map[string][]chan struct{}
 	mux              sync.Mutex
 }
 
@@ -16,7 +16,7 @@ func NewSyncStreamsModel() *SyncStreamsModel {
 	return &SyncStreamsModel{
 		ObjectStream:     make(map[string]pb.GameService_SyncObjectServer),
 		PlayerDataStream: make(map[string]pb.GameService_SyncPlayerDataServer),
-		DoneChannel:      make(map[string]chan struct{}),
+		DoneChannels:     make(map[string][]chan struct{}),
 	}
 }
 
@@ -24,14 +24,14 @@ func (ssm *SyncStreamsModel) AddObjectStream(done chan struct{}, playerId string
 	ssm.mux.Lock()
 	defer ssm.mux.Unlock()
 	ssm.ObjectStream[playerId] = stream
-	ssm.DoneChannel[playerId] = done
+	ssm.DoneChannels[playerId] = append(ssm.DoneChannels[playerId], done)
 }
 
 func (ssm *SyncStreamsModel) AddPlayerDataStream(done chan struct{}, playerId string, stream pb.GameService_SyncPlayerDataServer) {
 	ssm.mux.Lock()
 	defer ssm.mux.Unlock()
 	ssm.PlayerDataStream[playerId] = stream
-	ssm.DoneChannel[playerId] = done
+	ssm.DoneChannels[playerId] = append(ssm.DoneChannels[playerId], done)
 }
 
 func (ssm *SyncStreamsModel) RemoveStream(playerId string) {
@@ -39,8 +39,10 @@ func (ssm *SyncStreamsModel) RemoveStream(playerId string) {
 	defer ssm.mux.Unlock()
 	delete(ssm.ObjectStream, playerId)
 	delete(ssm.PlayerDataStream, playerId)
-	close(ssm.DoneChannel[playerId])
-	delete(ssm.DoneChannel, playerId)
+	for _, done := range ssm.DoneChannels[playerId] {
+		close(done)
+	}
+	delete(ssm.DoneChannels, playerId)
 }
 
 func (ssm *SyncStreamsModel) RangeObjectStream(f func(stream pb.GameService_SyncObjectServer)) {

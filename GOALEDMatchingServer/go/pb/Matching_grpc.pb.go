@@ -29,6 +29,8 @@ type MatchingServiceClient interface {
 	JoinPublicRoom(ctx context.Context, in *JoinPublicRoomRequest, opts ...grpc.CallOption) (*JoinPublicRoomResponse, error)
 	JoinPrivateRoom(ctx context.Context, in *JoinPrivateRoomRequest, opts ...grpc.CallOption) (*JoinPrivateRoomResponse, error)
 	LeaveRoom(ctx context.Context, in *LeaveRoomRequest, opts ...grpc.CallOption) (*LeaveRoomResponse, error)
+	StartGame(ctx context.Context, in *StartGameRequest, opts ...grpc.CallOption) (*StartGameResponse, error)
+	GetStartGameStream(ctx context.Context, in *GetStartGameStreamRequest, opts ...grpc.CallOption) (MatchingService_GetStartGameStreamClient, error)
 }
 
 type matchingServiceClient struct {
@@ -102,6 +104,47 @@ func (c *matchingServiceClient) LeaveRoom(ctx context.Context, in *LeaveRoomRequ
 	return out, nil
 }
 
+func (c *matchingServiceClient) StartGame(ctx context.Context, in *StartGameRequest, opts ...grpc.CallOption) (*StartGameResponse, error) {
+	out := new(StartGameResponse)
+	err := c.cc.Invoke(ctx, "/MatchingService.MatchingService/StartGame", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *matchingServiceClient) GetStartGameStream(ctx context.Context, in *GetStartGameStreamRequest, opts ...grpc.CallOption) (MatchingService_GetStartGameStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &MatchingService_ServiceDesc.Streams[0], "/MatchingService.MatchingService/GetStartGameStream", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &matchingServiceGetStartGameStreamClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type MatchingService_GetStartGameStreamClient interface {
+	Recv() (*GetStartGameStreamResponse, error)
+	grpc.ClientStream
+}
+
+type matchingServiceGetStartGameStreamClient struct {
+	grpc.ClientStream
+}
+
+func (x *matchingServiceGetStartGameStreamClient) Recv() (*GetStartGameStreamResponse, error) {
+	m := new(GetStartGameStreamResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // MatchingServiceServer is the server API for MatchingService service.
 // All implementations must embed UnimplementedMatchingServiceServer
 // for forward compatibility
@@ -113,6 +156,8 @@ type MatchingServiceServer interface {
 	JoinPublicRoom(context.Context, *JoinPublicRoomRequest) (*JoinPublicRoomResponse, error)
 	JoinPrivateRoom(context.Context, *JoinPrivateRoomRequest) (*JoinPrivateRoomResponse, error)
 	LeaveRoom(context.Context, *LeaveRoomRequest) (*LeaveRoomResponse, error)
+	StartGame(context.Context, *StartGameRequest) (*StartGameResponse, error)
+	GetStartGameStream(*GetStartGameStreamRequest, MatchingService_GetStartGameStreamServer) error
 	mustEmbedUnimplementedMatchingServiceServer()
 }
 
@@ -140,6 +185,12 @@ func (UnimplementedMatchingServiceServer) JoinPrivateRoom(context.Context, *Join
 }
 func (UnimplementedMatchingServiceServer) LeaveRoom(context.Context, *LeaveRoomRequest) (*LeaveRoomResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LeaveRoom not implemented")
+}
+func (UnimplementedMatchingServiceServer) StartGame(context.Context, *StartGameRequest) (*StartGameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartGame not implemented")
+}
+func (UnimplementedMatchingServiceServer) GetStartGameStream(*GetStartGameStreamRequest, MatchingService_GetStartGameStreamServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetStartGameStream not implemented")
 }
 func (UnimplementedMatchingServiceServer) mustEmbedUnimplementedMatchingServiceServer() {}
 
@@ -280,6 +331,45 @@ func _MatchingService_LeaveRoom_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MatchingService_StartGame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartGameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MatchingServiceServer).StartGame(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/MatchingService.MatchingService/StartGame",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MatchingServiceServer).StartGame(ctx, req.(*StartGameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MatchingService_GetStartGameStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetStartGameStreamRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(MatchingServiceServer).GetStartGameStream(m, &matchingServiceGetStartGameStreamServer{stream})
+}
+
+type MatchingService_GetStartGameStreamServer interface {
+	Send(*GetStartGameStreamResponse) error
+	grpc.ServerStream
+}
+
+type matchingServiceGetStartGameStreamServer struct {
+	grpc.ServerStream
+}
+
+func (x *matchingServiceGetStartGameStreamServer) Send(m *GetStartGameStreamResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // MatchingService_ServiceDesc is the grpc.ServiceDesc for MatchingService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -315,7 +405,17 @@ var MatchingService_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "LeaveRoom",
 			Handler:    _MatchingService_LeaveRoom_Handler,
 		},
+		{
+			MethodName: "StartGame",
+			Handler:    _MatchingService_StartGame_Handler,
+		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "GetStartGameStream",
+			Handler:       _MatchingService_GetStartGameStream_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "Matching.proto",
 }

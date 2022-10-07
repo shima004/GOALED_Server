@@ -30,8 +30,10 @@ func (gm *GameModel) Run() {
 }
 
 func (gm *GameModel) Close() {
-	for _, done := range gm.streams.DoneChannel {
-		close(done)
+	for _, done := range gm.streams.DoneChannels {
+		for _, d := range done {
+			close(d)
+		}
 	}
 	close(gm.DoneChannel)
 }

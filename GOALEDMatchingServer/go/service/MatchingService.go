@@ -1,6 +1,7 @@
 package service
 
 import (
+	"GOALED/go/model"
 	pb "GOALED/go/pb"
 	"context"
 
@@ -9,7 +10,8 @@ import (
 
 type MatchingServer struct {
 	pb.UnimplementedMatchingServiceServer
-	Rooms map[string]*pb.Room
+	Rooms   map[string]*pb.Room
+	Streams *model.SyncStreamsModel
 }
 
 func (ms *MatchingServer) GetPlayerId(ctx context.Context, in *pb.GetPlayerIdRequest) (*pb.GetPlayerIdResponse, error) {
@@ -95,14 +97,15 @@ func (ms *MatchingServer) JoinPrivateRoom(ctx context.Context, in *pb.JoinPrivat
 }
 
 func (ms *MatchingServer) LeaveRoom(ctx context.Context, in *pb.LeaveRoomRequest) (*pb.LeaveRoomResponse, error) {
-	room := ms.Rooms[in.GetRoomId()]
-	for i, player := range room.Players {
-		if player.Id == in.GetPlayerId() {
-			room.Players = append(room.Players[:i], room.Players[i+1:]...)
-			room.CurrentPlayer -= 1
-			return &pb.LeaveRoomResponse{
-				Success: true,
-			}, nil
+	if room, ok := ms.Rooms[in.GetRoomId()]; ok {
+		for i, player := range room.Players {
+			if player.Id == in.GetPlayerId() {
+				room.Players = append(room.Players[:i], room.Players[i+1:]...)
+				room.CurrentPlayer -= 1
+				return &pb.LeaveRoomResponse{
+					Success: true,
+				}, nil
+			}
 		}
 	}
 	return &pb.LeaveRoomResponse{
@@ -110,8 +113,33 @@ func (ms *MatchingServer) LeaveRoom(ctx context.Context, in *pb.LeaveRoomRequest
 	}, nil
 }
 
+func (ms *MatchingServer) StartGame(ctx context.Context, in *pb.StartGameRequest) (*pb.StartGameResponse, error) {
+	if room, ok := ms.Rooms[in.GetRoomId()]; ok {
+		room.Status = pb.RoomStatus_PLAYING
+		for _, player := range room.Players {
+			ms.Streams.SendGameStart(player.Id, func(stream pb.MatchingService_GetStartGameStreamServer) {
+				stream.Send(&pb.GetStartGameStreamResponse{
+					Success: true,
+				})
+			})
+		}
+	}
+	return &pb.StartGameResponse{
+		Success: true,
+	}, nil
+}
+
+func (ms *MatchingServer) GetStartGameStream(in *pb.GetStartGameStreamRequest, stream pb.MatchingService_GetStartGameStreamServer) error {
+	done := make(chan struct{})
+	player_id := in.GetPlayerId()
+	ms.Streams.AddGameStartStream(done, player_id, stream)
+	<-done
+	return nil
+}
+
 func NewMatchingServer() *MatchingServer {
 	return &MatchingServer{
-		Rooms: make(map[string]*pb.Room),
+		Rooms:   make(map[string]*pb.Room),
+		Streams: model.NewSyncStreamsModel(),
 	}
 }
