@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  game:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/workspace
+    command: "go run go/main.go"
+    networks:
+      - goaled_network
+
+networks:
+  goaled_network:
+    external: true

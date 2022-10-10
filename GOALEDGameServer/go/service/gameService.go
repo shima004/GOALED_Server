@@ -4,6 +4,7 @@ import (
 	"GOALED/go/model"
 	pb "GOALED/go/pb"
 	"context"
+	"log"
 )
 
 type GameServer struct {
@@ -48,11 +49,13 @@ func (gs *GameServer) SyncObject(in *pb.SyncObjectRequest, stream pb.GameService
 
 func (gs *GameServer) SendObject(stream pb.GameService_SendObjectServer) error {
 	for {
-		object, err := stream.Recv()
+		res, err := stream.Recv()
 		if err != nil {
 			return err
 		}
-		gs.room[gs.players[object.Owner]].AddObject(object)
+		log.Println(res)
+		log.Println(gs.room[res.RoomId])
+		gs.room[res.RoomId].AddObject(res.Object)
 	}
 }
 

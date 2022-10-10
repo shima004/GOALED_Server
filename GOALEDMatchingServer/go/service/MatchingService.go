@@ -3,9 +3,13 @@ package service
 import (
 	"GOALED/go/model"
 	pb "GOALED/go/pb"
+	pbg "GOALED/go/pb/game"
 	"context"
+	"log"
 
 	"github.com/google/uuid"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 type MatchingServer struct {
@@ -37,6 +41,7 @@ func (ms *MatchingServer) CreatePublicRoom(ctx context.Context, in *pb.CreatePub
 	room := &pb.Room{
 		Id:            uuid.New().String(),
 		Name:          in.GetName(),
+		Owner:         in.GetOwner(),
 		Password:      "",
 		Status:        pb.RoomStatus_WAITING,
 		MaxPlayer:     in.GetMaxPlayer(),
@@ -53,6 +58,7 @@ func (ms *MatchingServer) CreatePrivateRoom(ctx context.Context, in *pb.CreatePr
 	room := &pb.Room{
 		Id:            uuid.New().String(),
 		Name:          in.GetName(),
+		Owner:         in.GetOwner(),
 		Password:      in.GetPassword(),
 		Status:        pb.RoomStatus_WAITING,
 		MaxPlayer:     in.GetMaxPlayer(),
@@ -114,7 +120,33 @@ func (ms *MatchingServer) LeaveRoom(ctx context.Context, in *pb.LeaveRoomRequest
 }
 
 func (ms *MatchingServer) StartGame(ctx context.Context, in *pb.StartGameRequest) (*pb.StartGameResponse, error) {
+	address := "goaledgameserver-game-1:8080"
+	conn, err := grpc.Dial(
+		address,
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
+		grpc.WithBlock(),
+	)
+	if err != nil {
+		log.Fatalf("did not connect: %v", err)
+	}
+	defer conn.Close()
+
 	if room, ok := ms.Rooms[in.GetRoomId()]; ok {
+		player_ids := make([]string, 0)
+		for _, player := range room.Players {
+			player_ids = append(player_ids, player.Id)
+		}
+		client := pbg.NewGameServiceClient(conn)
+		_, e := client.CreateRoom(ctx, &pbg.Room{
+			Id:        in.GetRoomId(),
+			Name:      room.GetName(),
+			Owner:     room.GetOwner(),
+			PlayerIds: player_ids,
+		})
+		if e != nil {
+			log.Fatalf("could not greet: %v", e)
+		}
+
 		room.Status = pb.RoomStatus_PLAYING
 		for _, player := range room.Players {
 			ms.Streams.SendGameStart(player.Id, func(stream pb.MatchingService_GetStartGameStreamServer) {

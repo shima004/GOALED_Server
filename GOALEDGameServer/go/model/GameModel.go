@@ -7,7 +7,7 @@ import (
 type GameModel struct {
 	streams           SyncStreamsModel
 	PlayerDataChannel chan *pb.PlayerData
-	ObjectsChannel    chan *pb.Object
+	ObjectsChannel    chan []*pb.Object
 	DoneChannel       chan struct{}
 	Room              *pb.Room
 }
@@ -20,8 +20,11 @@ func (gm *GameModel) Run() {
 				stream.Send(playerData)
 			})
 		case object := <-gm.ObjectsChannel:
+			res := pb.SyncObjectResponse{
+				Object: object,
+			}
 			gm.streams.RangeObjectStream(func(stream pb.GameService_SyncObjectServer) {
-				stream.Send(object)
+				stream.Send(&res)
 			})
 		case <-gm.DoneChannel:
 			return
@@ -42,7 +45,7 @@ func NewGameModel(room *pb.Room) *GameModel {
 	gamemodel := &GameModel{
 		streams:           *NewSyncStreamsModel(),
 		PlayerDataChannel: make(chan *pb.PlayerData),
-		ObjectsChannel:    make(chan *pb.Object),
+		ObjectsChannel:    make(chan []*pb.Object),
 		DoneChannel:       make(chan struct{}),
 		Room:              room,
 	}
@@ -58,6 +61,6 @@ func (gm *GameModel) AddPlayerData(playerData *pb.PlayerData) {
 	gm.PlayerDataChannel <- playerData
 }
 
-func (gm *GameModel) AddObject(object *pb.Object) {
+func (gm *GameModel) AddObject(object []*pb.Object) {
 	gm.ObjectsChannel <- object
 }

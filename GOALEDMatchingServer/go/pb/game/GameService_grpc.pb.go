@@ -4,7 +4,7 @@
 // - protoc             v3.21.5
 // source: GameService.proto
 
-package pb
+package pbg
 
 import (
 	context "context"
@@ -128,7 +128,7 @@ func (c *gameServiceClient) SyncObject(ctx context.Context, in *SyncObjectReques
 }
 
 type GameService_SyncObjectClient interface {
-	Recv() (*SyncObjectResponse, error)
+	Recv() (*Object, error)
 	grpc.ClientStream
 }
 
@@ -136,8 +136,8 @@ type gameServiceSyncObjectClient struct {
 	grpc.ClientStream
 }
 
-func (x *gameServiceSyncObjectClient) Recv() (*SyncObjectResponse, error) {
-	m := new(SyncObjectResponse)
+func (x *gameServiceSyncObjectClient) Recv() (*Object, error) {
+	m := new(Object)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -154,7 +154,7 @@ func (c *gameServiceClient) SendObject(ctx context.Context, opts ...grpc.CallOpt
 }
 
 type GameService_SendObjectClient interface {
-	Send(*SendObjectRequest) error
+	Send(*Object) error
 	CloseAndRecv() (*SendObjectResponse, error)
 	grpc.ClientStream
 }
@@ -163,7 +163,7 @@ type gameServiceSendObjectClient struct {
 	grpc.ClientStream
 }
 
-func (x *gameServiceSendObjectClient) Send(m *SendObjectRequest) error {
+func (x *gameServiceSendObjectClient) Send(m *Object) error {
 	return x.ClientStream.SendMsg(m)
 }
 
@@ -296,7 +296,7 @@ func _GameService_SyncObject_Handler(srv interface{}, stream grpc.ServerStream) 
 }
 
 type GameService_SyncObjectServer interface {
-	Send(*SyncObjectResponse) error
+	Send(*Object) error
 	grpc.ServerStream
 }
 
@@ -304,7 +304,7 @@ type gameServiceSyncObjectServer struct {
 	grpc.ServerStream
 }
 
-func (x *gameServiceSyncObjectServer) Send(m *SyncObjectResponse) error {
+func (x *gameServiceSyncObjectServer) Send(m *Object) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -314,7 +314,7 @@ func _GameService_SendObject_Handler(srv interface{}, stream grpc.ServerStream) 
 
 type GameService_SendObjectServer interface {
 	SendAndClose(*SendObjectResponse) error
-	Recv() (*SendObjectRequest, error)
+	Recv() (*Object, error)
 	grpc.ServerStream
 }
 
@@ -326,8 +326,8 @@ func (x *gameServiceSendObjectServer) SendAndClose(m *SendObjectResponse) error 
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *gameServiceSendObjectServer) Recv() (*SendObjectRequest, error) {
-	m := new(SendObjectRequest)
+func (x *gameServiceSendObjectServer) Recv() (*Object, error) {
+	m := new(Object)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}

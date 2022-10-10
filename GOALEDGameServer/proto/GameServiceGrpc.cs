@@ -56,7 +56,9 @@ namespace GameService {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::GameService.SyncObjectRequest> __Marshaller_GameService_SyncObjectRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GameService.SyncObjectRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::GameService.Object> __Marshaller_GameService_Object = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GameService.Object.Parser));
+    static readonly grpc::Marshaller<global::GameService.SyncObjectResponse> __Marshaller_GameService_SyncObjectResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GameService.SyncObjectResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::GameService.SendObjectRequest> __Marshaller_GameService_SendObjectRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GameService.SendObjectRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::GameService.SendObjectResponse> __Marshaller_GameService_SendObjectResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GameService.SendObjectResponse.Parser));
 
@@ -85,19 +87,19 @@ namespace GameService {
         __Marshaller_GameService_SendPlayerDataResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::GameService.SyncObjectRequest, global::GameService.Object> __Method_SyncObject = new grpc::Method<global::GameService.SyncObjectRequest, global::GameService.Object>(
+    static readonly grpc::Method<global::GameService.SyncObjectRequest, global::GameService.SyncObjectResponse> __Method_SyncObject = new grpc::Method<global::GameService.SyncObjectRequest, global::GameService.SyncObjectResponse>(
         grpc::MethodType.ServerStreaming,
         __ServiceName,
         "SyncObject",
         __Marshaller_GameService_SyncObjectRequest,
-        __Marshaller_GameService_Object);
+        __Marshaller_GameService_SyncObjectResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::GameService.Object, global::GameService.SendObjectResponse> __Method_SendObject = new grpc::Method<global::GameService.Object, global::GameService.SendObjectResponse>(
+    static readonly grpc::Method<global::GameService.SendObjectRequest, global::GameService.SendObjectResponse> __Method_SendObject = new grpc::Method<global::GameService.SendObjectRequest, global::GameService.SendObjectResponse>(
         grpc::MethodType.ClientStreaming,
         __ServiceName,
         "SendObject",
-        __Marshaller_GameService_Object,
+        __Marshaller_GameService_SendObjectRequest,
         __Marshaller_GameService_SendObjectResponse);
 
     /// <summary>Service descriptor</summary>
@@ -129,13 +131,13 @@ namespace GameService {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task SyncObject(global::GameService.SyncObjectRequest request, grpc::IServerStreamWriter<global::GameService.Object> responseStream, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task SyncObject(global::GameService.SyncObjectRequest request, grpc::IServerStreamWriter<global::GameService.SyncObjectResponse> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::GameService.SendObjectResponse> SendObject(grpc::IAsyncStreamReader<global::GameService.Object> requestStream, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::GameService.SendObjectResponse> SendObject(grpc::IAsyncStreamReader<global::GameService.SendObjectRequest> requestStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -210,22 +212,22 @@ namespace GameService {
         return CallInvoker.AsyncClientStreamingCall(__Method_SendPlayerData, null, options);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncServerStreamingCall<global::GameService.Object> SyncObject(global::GameService.SyncObjectRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncServerStreamingCall<global::GameService.SyncObjectResponse> SyncObject(global::GameService.SyncObjectRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return SyncObject(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncServerStreamingCall<global::GameService.Object> SyncObject(global::GameService.SyncObjectRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncServerStreamingCall<global::GameService.SyncObjectResponse> SyncObject(global::GameService.SyncObjectRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncServerStreamingCall(__Method_SyncObject, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncClientStreamingCall<global::GameService.Object, global::GameService.SendObjectResponse> SendObject(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncClientStreamingCall<global::GameService.SendObjectRequest, global::GameService.SendObjectResponse> SendObject(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return SendObject(new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncClientStreamingCall<global::GameService.Object, global::GameService.SendObjectResponse> SendObject(grpc::CallOptions options)
+      public virtual grpc::AsyncClientStreamingCall<global::GameService.SendObjectRequest, global::GameService.SendObjectResponse> SendObject(grpc::CallOptions options)
       {
         return CallInvoker.AsyncClientStreamingCall(__Method_SendObject, null, options);
       }
@@ -260,8 +262,8 @@ namespace GameService {
       serviceBinder.AddMethod(__Method_CreateRoom, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GameService.Room, global::GameService.Room>(serviceImpl.CreateRoom));
       serviceBinder.AddMethod(__Method_SyncPlayerData, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::GameService.SyncPlayerDataRequest, global::GameService.PlayerData>(serviceImpl.SyncPlayerData));
       serviceBinder.AddMethod(__Method_SendPlayerData, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::GameService.PlayerData, global::GameService.SendPlayerDataResponse>(serviceImpl.SendPlayerData));
-      serviceBinder.AddMethod(__Method_SyncObject, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::GameService.SyncObjectRequest, global::GameService.Object>(serviceImpl.SyncObject));
-      serviceBinder.AddMethod(__Method_SendObject, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::GameService.Object, global::GameService.SendObjectResponse>(serviceImpl.SendObject));
+      serviceBinder.AddMethod(__Method_SyncObject, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::GameService.SyncObjectRequest, global::GameService.SyncObjectResponse>(serviceImpl.SyncObject));
+      serviceBinder.AddMethod(__Method_SendObject, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::GameService.SendObjectRequest, global::GameService.SendObjectResponse>(serviceImpl.SendObject));
     }
 
   }

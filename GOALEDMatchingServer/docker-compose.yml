@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  matching:
+    build: .
+    ports:
+      - "8090:8090"
+    volumes:
+      - .:/workspace
+    command: "sleep 1000000"
+    networks:
+      - goaled_network
+
+networks:
+  goaled_network:
+    external: true

@@ -12,6 +12,7 @@ enum RoomStatus {
 message Player {
   string id = 1;
   string name = 2;
+  string room_id = 3;
 }
 
 message Room {
@@ -53,7 +54,8 @@ message GetPublicRoomResponse {
 
 message CreatePublicRoomRequest {
   string name = 1;
-  int32 max_player = 2;
+  string owner = 2;
+  int32 max_player = 3;
 }
 
 message CreatePublicRoomResponse {
@@ -62,8 +64,9 @@ message CreatePublicRoomResponse {
 
 message CreatePrivateRoomRequest {
   string name = 1;
-  string password = 2;
-  int32 max_player = 3;
+  string owner = 2;
+  string password = 3;
+  int32 max_player = 4;
 }
 
 message CreatePrivateRoomResponse {

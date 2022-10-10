@@ -24,69 +24,70 @@ namespace MatchingService {
     static MatchingReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5NYXRjaGluZy5wcm90bxIPTWF0Y2hpbmdTZXJ2aWNlIiIKBlBsYXllchIK",
-            "CgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJIsQBCgRSb29tEgoKAmlkGAEgASgJ",
-            "EgwKBG5hbWUYAiABKAkSDQoFb3duZXIYAyABKAkSEAoIcGFzc3dvcmQYBCAB",
-            "KAkSKwoGc3RhdHVzGAUgASgOMhsuTWF0Y2hpbmdTZXJ2aWNlLlJvb21TdGF0",
-            "dXMSEgoKbWF4X3BsYXllchgGIAEoBRIWCg5jdXJyZW50X3BsYXllchgHIAEo",
-            "BRIoCgdwbGF5ZXJzGAggAygLMhcuTWF0Y2hpbmdTZXJ2aWNlLlBsYXllciIU",
-            "ChJHZXRQbGF5ZXJJZFJlcXVlc3QiKAoTR2V0UGxheWVySWRSZXNwb25zZRIR",
-            "CglwbGF5ZXJfaWQYASABKAkiFgoUR2V0UHVibGljUm9vbVJlcXVlc3QiPQoV",
-            "R2V0UHVibGljUm9vbVJlc3BvbnNlEiQKBXJvb21zGAEgAygLMhUuTWF0Y2hp",
-            "bmdTZXJ2aWNlLlJvb20iOwoXQ3JlYXRlUHVibGljUm9vbVJlcXVlc3QSDAoE",
-            "bmFtZRgBIAEoCRISCgptYXhfcGxheWVyGAIgASgFIj8KGENyZWF0ZVB1Ymxp",
-            "Y1Jvb21SZXNwb25zZRIjCgRyb29tGAEgASgLMhUuTWF0Y2hpbmdTZXJ2aWNl",
-            "LlJvb20iTgoYQ3JlYXRlUHJpdmF0ZVJvb21SZXF1ZXN0EgwKBG5hbWUYASAB",
-            "KAkSEAoIcGFzc3dvcmQYAiABKAkSEgoKbWF4X3BsYXllchgDIAEoBSJAChlD",
-            "cmVhdGVQcml2YXRlUm9vbVJlc3BvbnNlEiMKBHJvb20YASABKAsyFS5NYXRj",
-            "aGluZ1NlcnZpY2UuUm9vbSJRChVKb2luUHVibGljUm9vbVJlcXVlc3QSDwoH",
-            "cm9vbV9pZBgBIAEoCRInCgZwbGF5ZXIYAiABKAsyFy5NYXRjaGluZ1NlcnZp",
-            "Y2UuUGxheWVyIj0KFkpvaW5QdWJsaWNSb29tUmVzcG9uc2USIwoEcm9vbRgB",
-            "IAEoCzIVLk1hdGNoaW5nU2VydmljZS5Sb29tIlMKFkpvaW5Qcml2YXRlUm9v",
-            "bVJlcXVlc3QSEAoIcGFzc3dvcmQYASABKAkSJwoGcGxheWVyGAIgASgLMhcu",
-            "TWF0Y2hpbmdTZXJ2aWNlLlBsYXllciI+ChdKb2luUHJpdmF0ZVJvb21SZXNw",
-            "b25zZRIjCgRyb29tGAEgASgLMhUuTWF0Y2hpbmdTZXJ2aWNlLlJvb20iNgoQ",
-            "TGVhdmVSb29tUmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEhEKCXBsYXllcl9p",
-            "ZBgCIAEoCSIkChFMZWF2ZVJvb21SZXNwb25zZRIPCgdzdWNjZXNzGAEgASgI",
-            "IjYKEFN0YXJ0R2FtZVJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIRCglwbGF5",
-            "ZXJfaWQYAiABKAkiJAoRU3RhcnRHYW1lUmVzcG9uc2USDwoHc3VjY2VzcxgB",
-            "IAEoCCI/ChlHZXRTdGFydEdhbWVTdHJlYW1SZXF1ZXN0Eg8KB3Jvb21faWQY",
-            "ASABKAkSEQoJcGxheWVyX2lkGAIgASgJIi0KGkdldFN0YXJ0R2FtZVN0cmVh",
-            "bVJlc3BvbnNlEg8KB3N1Y2Nlc3MYASABKAgqJgoKUm9vbVN0YXR1cxILCgdX",
-            "QUlUSU5HEAASCwoHUExBWUlORxABMpQHCg9NYXRjaGluZ1NlcnZpY2USWgoL",
-            "R2V0UGxheWVySWQSIy5NYXRjaGluZ1NlcnZpY2UuR2V0UGxheWVySWRSZXF1",
-            "ZXN0GiQuTWF0Y2hpbmdTZXJ2aWNlLkdldFBsYXllcklkUmVzcG9uc2UiABJg",
-            "Cg1HZXRQdWJsaWNSb29tEiUuTWF0Y2hpbmdTZXJ2aWNlLkdldFB1YmxpY1Jv",
-            "b21SZXF1ZXN0GiYuTWF0Y2hpbmdTZXJ2aWNlLkdldFB1YmxpY1Jvb21SZXNw",
-            "b25zZSIAEmkKEENyZWF0ZVB1YmxpY1Jvb20SKC5NYXRjaGluZ1NlcnZpY2Uu",
-            "Q3JlYXRlUHVibGljUm9vbVJlcXVlc3QaKS5NYXRjaGluZ1NlcnZpY2UuQ3Jl",
-            "YXRlUHVibGljUm9vbVJlc3BvbnNlIgASbAoRQ3JlYXRlUHJpdmF0ZVJvb20S",
-            "KS5NYXRjaGluZ1NlcnZpY2UuQ3JlYXRlUHJpdmF0ZVJvb21SZXF1ZXN0Giou",
-            "TWF0Y2hpbmdTZXJ2aWNlLkNyZWF0ZVByaXZhdGVSb29tUmVzcG9uc2UiABJj",
-            "Cg5Kb2luUHVibGljUm9vbRImLk1hdGNoaW5nU2VydmljZS5Kb2luUHVibGlj",
-            "Um9vbVJlcXVlc3QaJy5NYXRjaGluZ1NlcnZpY2UuSm9pblB1YmxpY1Jvb21S",
-            "ZXNwb25zZSIAEmYKD0pvaW5Qcml2YXRlUm9vbRInLk1hdGNoaW5nU2Vydmlj",
-            "ZS5Kb2luUHJpdmF0ZVJvb21SZXF1ZXN0GiguTWF0Y2hpbmdTZXJ2aWNlLkpv",
-            "aW5Qcml2YXRlUm9vbVJlc3BvbnNlIgASVAoJTGVhdmVSb29tEiEuTWF0Y2hp",
-            "bmdTZXJ2aWNlLkxlYXZlUm9vbVJlcXVlc3QaIi5NYXRjaGluZ1NlcnZpY2Uu",
-            "TGVhdmVSb29tUmVzcG9uc2UiABJUCglTdGFydEdhbWUSIS5NYXRjaGluZ1Nl",
-            "cnZpY2UuU3RhcnRHYW1lUmVxdWVzdBoiLk1hdGNoaW5nU2VydmljZS5TdGFy",
-            "dEdhbWVSZXNwb25zZSIAEnEKEkdldFN0YXJ0R2FtZVN0cmVhbRIqLk1hdGNo",
-            "aW5nU2VydmljZS5HZXRTdGFydEdhbWVTdHJlYW1SZXF1ZXN0GisuTWF0Y2hp",
-            "bmdTZXJ2aWNlLkdldFN0YXJ0R2FtZVN0cmVhbVJlc3BvbnNlIgAwAUIKWggu",
-            "Li9nby9wYmIGcHJvdG8z"));
+            "Cg5NYXRjaGluZy5wcm90bxIPTWF0Y2hpbmdTZXJ2aWNlIjMKBlBsYXllchIK",
+            "CgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEg8KB3Jvb21faWQYAyABKAkixAEK",
+            "BFJvb20SCgoCaWQYASABKAkSDAoEbmFtZRgCIAEoCRINCgVvd25lchgDIAEo",
+            "CRIQCghwYXNzd29yZBgEIAEoCRIrCgZzdGF0dXMYBSABKA4yGy5NYXRjaGlu",
+            "Z1NlcnZpY2UuUm9vbVN0YXR1cxISCgptYXhfcGxheWVyGAYgASgFEhYKDmN1",
+            "cnJlbnRfcGxheWVyGAcgASgFEigKB3BsYXllcnMYCCADKAsyFy5NYXRjaGlu",
+            "Z1NlcnZpY2UuUGxheWVyIhQKEkdldFBsYXllcklkUmVxdWVzdCIoChNHZXRQ",
+            "bGF5ZXJJZFJlc3BvbnNlEhEKCXBsYXllcl9pZBgBIAEoCSIWChRHZXRQdWJs",
+            "aWNSb29tUmVxdWVzdCI9ChVHZXRQdWJsaWNSb29tUmVzcG9uc2USJAoFcm9v",
+            "bXMYASADKAsyFS5NYXRjaGluZ1NlcnZpY2UuUm9vbSJKChdDcmVhdGVQdWJs",
+            "aWNSb29tUmVxdWVzdBIMCgRuYW1lGAEgASgJEg0KBW93bmVyGAIgASgJEhIK",
+            "Cm1heF9wbGF5ZXIYAyABKAUiPwoYQ3JlYXRlUHVibGljUm9vbVJlc3BvbnNl",
+            "EiMKBHJvb20YASABKAsyFS5NYXRjaGluZ1NlcnZpY2UuUm9vbSJdChhDcmVh",
+            "dGVQcml2YXRlUm9vbVJlcXVlc3QSDAoEbmFtZRgBIAEoCRINCgVvd25lchgC",
+            "IAEoCRIQCghwYXNzd29yZBgDIAEoCRISCgptYXhfcGxheWVyGAQgASgFIkAK",
+            "GUNyZWF0ZVByaXZhdGVSb29tUmVzcG9uc2USIwoEcm9vbRgBIAEoCzIVLk1h",
+            "dGNoaW5nU2VydmljZS5Sb29tIlEKFUpvaW5QdWJsaWNSb29tUmVxdWVzdBIP",
+            "Cgdyb29tX2lkGAEgASgJEicKBnBsYXllchgCIAEoCzIXLk1hdGNoaW5nU2Vy",
+            "dmljZS5QbGF5ZXIiPQoWSm9pblB1YmxpY1Jvb21SZXNwb25zZRIjCgRyb29t",
+            "GAEgASgLMhUuTWF0Y2hpbmdTZXJ2aWNlLlJvb20iUwoWSm9pblByaXZhdGVS",
+            "b29tUmVxdWVzdBIQCghwYXNzd29yZBgBIAEoCRInCgZwbGF5ZXIYAiABKAsy",
+            "Fy5NYXRjaGluZ1NlcnZpY2UuUGxheWVyIj4KF0pvaW5Qcml2YXRlUm9vbVJl",
+            "c3BvbnNlEiMKBHJvb20YASABKAsyFS5NYXRjaGluZ1NlcnZpY2UuUm9vbSI2",
+            "ChBMZWF2ZVJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSEQoJcGxheWVy",
+            "X2lkGAIgASgJIiQKEUxlYXZlUm9vbVJlc3BvbnNlEg8KB3N1Y2Nlc3MYASAB",
+            "KAgiNgoQU3RhcnRHYW1lUmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEhEKCXBs",
+            "YXllcl9pZBgCIAEoCSIkChFTdGFydEdhbWVSZXNwb25zZRIPCgdzdWNjZXNz",
+            "GAEgASgIIj8KGUdldFN0YXJ0R2FtZVN0cmVhbVJlcXVlc3QSDwoHcm9vbV9p",
+            "ZBgBIAEoCRIRCglwbGF5ZXJfaWQYAiABKAkiLQoaR2V0U3RhcnRHYW1lU3Ry",
+            "ZWFtUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCComCgpSb29tU3RhdHVzEgsK",
+            "B1dBSVRJTkcQABILCgdQTEFZSU5HEAEylAcKD01hdGNoaW5nU2VydmljZRJa",
+            "CgtHZXRQbGF5ZXJJZBIjLk1hdGNoaW5nU2VydmljZS5HZXRQbGF5ZXJJZFJl",
+            "cXVlc3QaJC5NYXRjaGluZ1NlcnZpY2UuR2V0UGxheWVySWRSZXNwb25zZSIA",
+            "EmAKDUdldFB1YmxpY1Jvb20SJS5NYXRjaGluZ1NlcnZpY2UuR2V0UHVibGlj",
+            "Um9vbVJlcXVlc3QaJi5NYXRjaGluZ1NlcnZpY2UuR2V0UHVibGljUm9vbVJl",
+            "c3BvbnNlIgASaQoQQ3JlYXRlUHVibGljUm9vbRIoLk1hdGNoaW5nU2Vydmlj",
+            "ZS5DcmVhdGVQdWJsaWNSb29tUmVxdWVzdBopLk1hdGNoaW5nU2VydmljZS5D",
+            "cmVhdGVQdWJsaWNSb29tUmVzcG9uc2UiABJsChFDcmVhdGVQcml2YXRlUm9v",
+            "bRIpLk1hdGNoaW5nU2VydmljZS5DcmVhdGVQcml2YXRlUm9vbVJlcXVlc3Qa",
+            "Ki5NYXRjaGluZ1NlcnZpY2UuQ3JlYXRlUHJpdmF0ZVJvb21SZXNwb25zZSIA",
+            "EmMKDkpvaW5QdWJsaWNSb29tEiYuTWF0Y2hpbmdTZXJ2aWNlLkpvaW5QdWJs",
+            "aWNSb29tUmVxdWVzdBonLk1hdGNoaW5nU2VydmljZS5Kb2luUHVibGljUm9v",
+            "bVJlc3BvbnNlIgASZgoPSm9pblByaXZhdGVSb29tEicuTWF0Y2hpbmdTZXJ2",
+            "aWNlLkpvaW5Qcml2YXRlUm9vbVJlcXVlc3QaKC5NYXRjaGluZ1NlcnZpY2Uu",
+            "Sm9pblByaXZhdGVSb29tUmVzcG9uc2UiABJUCglMZWF2ZVJvb20SIS5NYXRj",
+            "aGluZ1NlcnZpY2UuTGVhdmVSb29tUmVxdWVzdBoiLk1hdGNoaW5nU2Vydmlj",
+            "ZS5MZWF2ZVJvb21SZXNwb25zZSIAElQKCVN0YXJ0R2FtZRIhLk1hdGNoaW5n",
+            "U2VydmljZS5TdGFydEdhbWVSZXF1ZXN0GiIuTWF0Y2hpbmdTZXJ2aWNlLlN0",
+            "YXJ0R2FtZVJlc3BvbnNlIgAScQoSR2V0U3RhcnRHYW1lU3RyZWFtEiouTWF0",
+            "Y2hpbmdTZXJ2aWNlLkdldFN0YXJ0R2FtZVN0cmVhbVJlcXVlc3QaKy5NYXRj",
+            "aGluZ1NlcnZpY2UuR2V0U3RhcnRHYW1lU3RyZWFtUmVzcG9uc2UiADABQgpa",
+            "CC4uL2dvL3BiYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::MatchingService.RoomStatus), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.Player), global::MatchingService.Player.Parser, new[]{ "Id", "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.Player), global::MatchingService.Player.Parser, new[]{ "Id", "Name", "RoomId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.Room), global::MatchingService.Room.Parser, new[]{ "Id", "Name", "Owner", "Password", "Status", "MaxPlayer", "CurrentPlayer", "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.GetPlayerIdRequest), global::MatchingService.GetPlayerIdRequest.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.GetPlayerIdResponse), global::MatchingService.GetPlayerIdResponse.Parser, new[]{ "PlayerId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.GetPublicRoomRequest), global::MatchingService.GetPublicRoomRequest.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.GetPublicRoomResponse), global::MatchingService.GetPublicRoomResponse.Parser, new[]{ "Rooms" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.CreatePublicRoomRequest), global::MatchingService.CreatePublicRoomRequest.Parser, new[]{ "Name", "MaxPlayer" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.CreatePublicRoomRequest), global::MatchingService.CreatePublicRoomRequest.Parser, new[]{ "Name", "Owner", "MaxPlayer" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.CreatePublicRoomResponse), global::MatchingService.CreatePublicRoomResponse.Parser, new[]{ "Room" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.CreatePrivateRoomRequest), global::MatchingService.CreatePrivateRoomRequest.Parser, new[]{ "Name", "Password", "MaxPlayer" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.CreatePrivateRoomRequest), global::MatchingService.CreatePrivateRoomRequest.Parser, new[]{ "Name", "Owner", "Password", "MaxPlayer" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.CreatePrivateRoomResponse), global::MatchingService.CreatePrivateRoomResponse.Parser, new[]{ "Room" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.JoinPublicRoomRequest), global::MatchingService.JoinPublicRoomRequest.Parser, new[]{ "RoomId", "Player" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MatchingService.JoinPublicRoomResponse), global::MatchingService.JoinPublicRoomResponse.Parser, new[]{ "Room" }, null, null, null, null),
@@ -148,6 +149,7 @@ namespace MatchingService {
     public Player(Player other) : this() {
       id_ = other.id_;
       name_ = other.name_;
+      roomId_ = other.roomId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -181,6 +183,18 @@ namespace MatchingService {
       }
     }
 
+    /// <summary>Field number for the "room_id" field.</summary>
+    public const int RoomIdFieldNumber = 3;
+    private string roomId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string RoomId {
+      get { return roomId_; }
+      set {
+        roomId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -198,6 +212,7 @@ namespace MatchingService {
       }
       if (Id != other.Id) return false;
       if (Name != other.Name) return false;
+      if (RoomId != other.RoomId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -207,6 +222,7 @@ namespace MatchingService {
       int hash = 1;
       if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (RoomId.Length != 0) hash ^= RoomId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -233,6 +249,10 @@ namespace MatchingService {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
+      if (RoomId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(RoomId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -251,6 +271,10 @@ namespace MatchingService {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
+      if (RoomId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(RoomId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -266,6 +290,9 @@ namespace MatchingService {
       }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (RoomId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RoomId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -284,6 +311,9 @@ namespace MatchingService {
       }
       if (other.Name.Length != 0) {
         Name = other.Name;
+      }
+      if (other.RoomId.Length != 0) {
+        RoomId = other.RoomId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -308,6 +338,10 @@ namespace MatchingService {
             Name = input.ReadString();
             break;
           }
+          case 26: {
+            RoomId = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -329,6 +363,10 @@ namespace MatchingService {
           }
           case 18: {
             Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            RoomId = input.ReadString();
             break;
           }
         }
@@ -1481,6 +1519,7 @@ namespace MatchingService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CreatePublicRoomRequest(CreatePublicRoomRequest other) : this() {
       name_ = other.name_;
+      owner_ = other.owner_;
       maxPlayer_ = other.maxPlayer_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1503,8 +1542,20 @@ namespace MatchingService {
       }
     }
 
+    /// <summary>Field number for the "owner" field.</summary>
+    public const int OwnerFieldNumber = 2;
+    private string owner_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Owner {
+      get { return owner_; }
+      set {
+        owner_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "max_player" field.</summary>
-    public const int MaxPlayerFieldNumber = 2;
+    public const int MaxPlayerFieldNumber = 3;
     private int maxPlayer_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1531,6 +1582,7 @@ namespace MatchingService {
         return true;
       }
       if (Name != other.Name) return false;
+      if (Owner != other.Owner) return false;
       if (MaxPlayer != other.MaxPlayer) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1540,6 +1592,7 @@ namespace MatchingService {
     public override int GetHashCode() {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Owner.Length != 0) hash ^= Owner.GetHashCode();
       if (MaxPlayer != 0) hash ^= MaxPlayer.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1563,8 +1616,12 @@ namespace MatchingService {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
+      if (Owner.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Owner);
+      }
       if (MaxPlayer != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(MaxPlayer);
       }
       if (_unknownFields != null) {
@@ -1581,8 +1638,12 @@ namespace MatchingService {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
+      if (Owner.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Owner);
+      }
       if (MaxPlayer != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(MaxPlayer);
       }
       if (_unknownFields != null) {
@@ -1597,6 +1658,9 @@ namespace MatchingService {
       int size = 0;
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Owner.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Owner);
       }
       if (MaxPlayer != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxPlayer);
@@ -1615,6 +1679,9 @@ namespace MatchingService {
       }
       if (other.Name.Length != 0) {
         Name = other.Name;
+      }
+      if (other.Owner.Length != 0) {
+        Owner = other.Owner;
       }
       if (other.MaxPlayer != 0) {
         MaxPlayer = other.MaxPlayer;
@@ -1638,7 +1705,11 @@ namespace MatchingService {
             Name = input.ReadString();
             break;
           }
-          case 16: {
+          case 18: {
+            Owner = input.ReadString();
+            break;
+          }
+          case 24: {
             MaxPlayer = input.ReadInt32();
             break;
           }
@@ -1661,7 +1732,11 @@ namespace MatchingService {
             Name = input.ReadString();
             break;
           }
-          case 16: {
+          case 18: {
+            Owner = input.ReadString();
+            break;
+          }
+          case 24: {
             MaxPlayer = input.ReadInt32();
             break;
           }
@@ -1905,6 +1980,7 @@ namespace MatchingService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CreatePrivateRoomRequest(CreatePrivateRoomRequest other) : this() {
       name_ = other.name_;
+      owner_ = other.owner_;
       password_ = other.password_;
       maxPlayer_ = other.maxPlayer_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1928,8 +2004,20 @@ namespace MatchingService {
       }
     }
 
+    /// <summary>Field number for the "owner" field.</summary>
+    public const int OwnerFieldNumber = 2;
+    private string owner_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Owner {
+      get { return owner_; }
+      set {
+        owner_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "password" field.</summary>
-    public const int PasswordFieldNumber = 2;
+    public const int PasswordFieldNumber = 3;
     private string password_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1941,7 +2029,7 @@ namespace MatchingService {
     }
 
     /// <summary>Field number for the "max_player" field.</summary>
-    public const int MaxPlayerFieldNumber = 3;
+    public const int MaxPlayerFieldNumber = 4;
     private int maxPlayer_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1968,6 +2056,7 @@ namespace MatchingService {
         return true;
       }
       if (Name != other.Name) return false;
+      if (Owner != other.Owner) return false;
       if (Password != other.Password) return false;
       if (MaxPlayer != other.MaxPlayer) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1978,6 +2067,7 @@ namespace MatchingService {
     public override int GetHashCode() {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Owner.Length != 0) hash ^= Owner.GetHashCode();
       if (Password.Length != 0) hash ^= Password.GetHashCode();
       if (MaxPlayer != 0) hash ^= MaxPlayer.GetHashCode();
       if (_unknownFields != null) {
@@ -2002,12 +2092,16 @@ namespace MatchingService {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
-      if (Password.Length != 0) {
+      if (Owner.Length != 0) {
         output.WriteRawTag(18);
+        output.WriteString(Owner);
+      }
+      if (Password.Length != 0) {
+        output.WriteRawTag(26);
         output.WriteString(Password);
       }
       if (MaxPlayer != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteInt32(MaxPlayer);
       }
       if (_unknownFields != null) {
@@ -2024,12 +2118,16 @@ namespace MatchingService {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
-      if (Password.Length != 0) {
+      if (Owner.Length != 0) {
         output.WriteRawTag(18);
+        output.WriteString(Owner);
+      }
+      if (Password.Length != 0) {
+        output.WriteRawTag(26);
         output.WriteString(Password);
       }
       if (MaxPlayer != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteInt32(MaxPlayer);
       }
       if (_unknownFields != null) {
@@ -2044,6 +2142,9 @@ namespace MatchingService {
       int size = 0;
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Owner.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Owner);
       }
       if (Password.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Password);
@@ -2065,6 +2166,9 @@ namespace MatchingService {
       }
       if (other.Name.Length != 0) {
         Name = other.Name;
+      }
+      if (other.Owner.Length != 0) {
+        Owner = other.Owner;
       }
       if (other.Password.Length != 0) {
         Password = other.Password;
@@ -2092,10 +2196,14 @@ namespace MatchingService {
             break;
           }
           case 18: {
+            Owner = input.ReadString();
+            break;
+          }
+          case 26: {
             Password = input.ReadString();
             break;
           }
-          case 24: {
+          case 32: {
             MaxPlayer = input.ReadInt32();
             break;
           }
@@ -2119,10 +2227,14 @@ namespace MatchingService {
             break;
           }
           case 18: {
+            Owner = input.ReadString();
+            break;
+          }
+          case 26: {
             Password = input.ReadString();
             break;
           }
-          case 24: {
+          case 32: {
             MaxPlayer = input.ReadInt32();
             break;
           }
