@@ -6,8 +6,8 @@ services:
     ports:
       - "8090:8090"
     volumes:
-      - .:/workspace
-    command: "sleep 1000000"
+      - .:/app
+    command: bash -c "cd /app && go mod tidy && go run go/main.go"
     networks:
       - goaled_network
 

@@ -7,6 +7,7 @@ RUN curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v21.5
 RUN unzip protoc-21.5-linux-x86_64.zip -d protoc3
 RUN mv protoc3/bin/* /usr/local/bin/
 RUN mv protoc3/include/* /usr/local/include/
+RUN rm -rf protoc-21.5-linux-x86_64.zip protoc3
 
 RUN mkdir /grpc_plugins
 RUN curl https://packages.grpc.io/archive/2022/09/76588969c02873ace926014c148eaa0debd9eae0-637ad889-b141-4ff9-84bb-0ef63cf63330/protoc/grpc-protoc_linux_x64-1.50.0-dev.tar.gz | tar zxvf - -C /grpc_plugins/

@@ -6,8 +6,8 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - .:/workspace
-    command: "go run go/main.go"
+      - .:/app
+    command: bash -c "cd /app && go mod tidy && go run go/main.go"
     networks:
       - goaled_network
 
