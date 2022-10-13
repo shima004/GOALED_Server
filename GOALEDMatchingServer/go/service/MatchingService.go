@@ -12,6 +12,11 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
+var (
+	GAME_SERVER_ADDRESS = "goaledgameserver-game-1"
+	GAME_SERVER_PORT    = "8080"
+)
+
 type MatchingServer struct {
 	pb.UnimplementedMatchingServiceServer
 	Rooms   map[string]*pb.Room
@@ -78,6 +83,11 @@ func (ms *MatchingServer) JoinPublicRoom(ctx context.Context, in *pb.JoinPublicR
 			Room: nil,
 		}, nil
 	}
+	if room.Status != pb.RoomStatus_WAITING || room.CurrentPlayer >= room.MaxPlayer {
+		return &pb.JoinPublicRoomResponse{
+			Room: nil,
+		}, nil
+	}
 
 	room.Players = append(room.Players, in.GetPlayer())
 	room.CurrentPlayer += 1
@@ -90,6 +100,11 @@ func (ms *MatchingServer) JoinPrivateRoom(ctx context.Context, in *pb.JoinPrivat
 	password := in.GetPassword()
 	for _, room := range ms.Rooms {
 		if room.Password == password {
+			if room.Status != pb.RoomStatus_WAITING || room.CurrentPlayer >= room.MaxPlayer {
+				return &pb.JoinPrivateRoomResponse{
+					Room: nil,
+				}, nil
+			}
 			room.Players = append(room.Players, in.GetPlayer())
 			room.CurrentPlayer += 1
 			return &pb.JoinPrivateRoomResponse{
@@ -108,6 +123,9 @@ func (ms *MatchingServer) LeaveRoom(ctx context.Context, in *pb.LeaveRoomRequest
 			if player.Id == in.GetPlayerId() {
 				room.Players = append(room.Players[:i], room.Players[i+1:]...)
 				room.CurrentPlayer -= 1
+				if room.CurrentPlayer == 0 {
+					delete(ms.Rooms, room.Id)
+				}
 				return &pb.LeaveRoomResponse{
 					Success: true,
 				}, nil
@@ -120,9 +138,8 @@ func (ms *MatchingServer) LeaveRoom(ctx context.Context, in *pb.LeaveRoomRequest
 }
 
 func (ms *MatchingServer) StartGame(ctx context.Context, in *pb.StartGameRequest) (*pb.StartGameResponse, error) {
-	address := "goaledgameserver-game-1:8080"
 	conn, err := grpc.Dial(
-		address,
+		GAME_SERVER_ADDRESS+":"+GAME_SERVER_PORT,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithBlock(),
 	)
