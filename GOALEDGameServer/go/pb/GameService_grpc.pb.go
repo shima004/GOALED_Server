@@ -27,6 +27,7 @@ type GameServiceClient interface {
 	SendPlayerData(ctx context.Context, opts ...grpc.CallOption) (GameService_SendPlayerDataClient, error)
 	SyncObject(ctx context.Context, in *SyncObjectRequest, opts ...grpc.CallOption) (GameService_SyncObjectClient, error)
 	SendObject(ctx context.Context, opts ...grpc.CallOption) (GameService_SendObjectClient, error)
+	CloseStream(ctx context.Context, in *CloseStreamRequest, opts ...grpc.CallOption) (*CloseStreamResponse, error)
 }
 
 type gameServiceClient struct {
@@ -62,7 +63,7 @@ func (c *gameServiceClient) SyncPlayerData(ctx context.Context, in *SyncPlayerDa
 }
 
 type GameService_SyncPlayerDataClient interface {
-	Recv() (*PlayerData, error)
+	Recv() (*SyncPlayerDataResponse, error)
 	grpc.ClientStream
 }
 
@@ -70,8 +71,8 @@ type gameServiceSyncPlayerDataClient struct {
 	grpc.ClientStream
 }
 
-func (x *gameServiceSyncPlayerDataClient) Recv() (*PlayerData, error) {
-	m := new(PlayerData)
+func (x *gameServiceSyncPlayerDataClient) Recv() (*SyncPlayerDataResponse, error) {
+	m := new(SyncPlayerDataResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -88,7 +89,7 @@ func (c *gameServiceClient) SendPlayerData(ctx context.Context, opts ...grpc.Cal
 }
 
 type GameService_SendPlayerDataClient interface {
-	Send(*PlayerData) error
+	Send(*SendPlayerDataRequest) error
 	CloseAndRecv() (*SendPlayerDataResponse, error)
 	grpc.ClientStream
 }
@@ -97,7 +98,7 @@ type gameServiceSendPlayerDataClient struct {
 	grpc.ClientStream
 }
 
-func (x *gameServiceSendPlayerDataClient) Send(m *PlayerData) error {
+func (x *gameServiceSendPlayerDataClient) Send(m *SendPlayerDataRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
@@ -178,6 +179,15 @@ func (x *gameServiceSendObjectClient) CloseAndRecv() (*SendObjectResponse, error
 	return m, nil
 }
 
+func (c *gameServiceClient) CloseStream(ctx context.Context, in *CloseStreamRequest, opts ...grpc.CallOption) (*CloseStreamResponse, error) {
+	out := new(CloseStreamResponse)
+	err := c.cc.Invoke(ctx, "/GameService.GameService/CloseStream", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GameServiceServer is the server API for GameService service.
 // All implementations must embed UnimplementedGameServiceServer
 // for forward compatibility
@@ -187,6 +197,7 @@ type GameServiceServer interface {
 	SendPlayerData(GameService_SendPlayerDataServer) error
 	SyncObject(*SyncObjectRequest, GameService_SyncObjectServer) error
 	SendObject(GameService_SendObjectServer) error
+	CloseStream(context.Context, *CloseStreamRequest) (*CloseStreamResponse, error)
 	mustEmbedUnimplementedGameServiceServer()
 }
 
@@ -208,6 +219,9 @@ func (UnimplementedGameServiceServer) SyncObject(*SyncObjectRequest, GameService
 }
 func (UnimplementedGameServiceServer) SendObject(GameService_SendObjectServer) error {
 	return status.Errorf(codes.Unimplemented, "method SendObject not implemented")
+}
+func (UnimplementedGameServiceServer) CloseStream(context.Context, *CloseStreamRequest) (*CloseStreamResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CloseStream not implemented")
 }
 func (UnimplementedGameServiceServer) mustEmbedUnimplementedGameServiceServer() {}
 
@@ -249,7 +263,7 @@ func _GameService_SyncPlayerData_Handler(srv interface{}, stream grpc.ServerStre
 }
 
 type GameService_SyncPlayerDataServer interface {
-	Send(*PlayerData) error
+	Send(*SyncPlayerDataResponse) error
 	grpc.ServerStream
 }
 
@@ -257,7 +271,7 @@ type gameServiceSyncPlayerDataServer struct {
 	grpc.ServerStream
 }
 
-func (x *gameServiceSyncPlayerDataServer) Send(m *PlayerData) error {
+func (x *gameServiceSyncPlayerDataServer) Send(m *SyncPlayerDataResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -267,7 +281,7 @@ func _GameService_SendPlayerData_Handler(srv interface{}, stream grpc.ServerStre
 
 type GameService_SendPlayerDataServer interface {
 	SendAndClose(*SendPlayerDataResponse) error
-	Recv() (*PlayerData, error)
+	Recv() (*SendPlayerDataRequest, error)
 	grpc.ServerStream
 }
 
@@ -279,8 +293,8 @@ func (x *gameServiceSendPlayerDataServer) SendAndClose(m *SendPlayerDataResponse
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *gameServiceSendPlayerDataServer) Recv() (*PlayerData, error) {
-	m := new(PlayerData)
+func (x *gameServiceSendPlayerDataServer) Recv() (*SendPlayerDataRequest, error) {
+	m := new(SendPlayerDataRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -334,6 +348,24 @@ func (x *gameServiceSendObjectServer) Recv() (*SendObjectRequest, error) {
 	return m, nil
 }
 
+func _GameService_CloseStream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CloseStreamRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GameServiceServer).CloseStream(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/GameService.GameService/CloseStream",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GameServiceServer).CloseStream(ctx, req.(*CloseStreamRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // GameService_ServiceDesc is the grpc.ServiceDesc for GameService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -344,6 +376,10 @@ var GameService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateRoom",
 			Handler:    _GameService_CreateRoom_Handler,
+		},
+		{
+			MethodName: "CloseStream",
+			Handler:    _GameService_CloseStream_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

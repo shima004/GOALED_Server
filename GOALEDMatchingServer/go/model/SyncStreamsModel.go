@@ -29,8 +29,10 @@ func (ssm *SyncStreamsModel) RemoveStream(playerId string) {
 	ssm.mux.Lock()
 	defer ssm.mux.Unlock()
 	delete(ssm.GameStartStream, playerId)
-	close(ssm.DoneChannel[playerId])
-	delete(ssm.DoneChannel, playerId)
+	if _, ok := ssm.DoneChannel[playerId]; ok {
+		close(ssm.DoneChannel[playerId])
+		delete(ssm.DoneChannel, playerId)
+	}
 }
 
 func (ssm *SyncStreamsModel) SendGameStart(player_id string, f func(stream pb.MatchingService_GetStartGameStreamServer)) {

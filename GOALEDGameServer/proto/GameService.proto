@@ -36,15 +36,25 @@ message Object{
 
 service GameService {
   rpc CreateRoom(Room) returns (Room) {}
-  rpc SyncPlayerData(SyncPlayerDataRequest) returns (stream PlayerData) {}
-  rpc SendPlayerData(stream PlayerData) returns (SendPlayerDataResponse) {}
+  rpc SyncPlayerData(SyncPlayerDataRequest) returns (stream SyncPlayerDataResponse) {}
+  rpc SendPlayerData(stream SendPlayerDataRequest) returns (SendPlayerDataResponse) {}
   rpc SyncObject(SyncObjectRequest) returns (stream SyncObjectResponse) {}
   rpc SendObject(stream SendObjectRequest) returns (SendObjectResponse) {}
+  rpc CloseStream(CloseStreamRequest) returns (CloseStreamResponse) {}
 }
 
 message SyncPlayerDataRequest {
   string room_id = 1;
   string player_id = 2;
+}
+
+message SyncPlayerDataResponse {
+  repeated PlayerData player_data = 1;
+}
+
+message SendPlayerDataRequest {
+  string room_id = 1;
+  repeated PlayerData player_data = 2;
 }
 
 message SendPlayerDataResponse {
@@ -68,5 +78,14 @@ message SendObjectRequest {
 }
 
 message SendObjectResponse {
+  string message = 1;
+}
+
+message CloseStreamRequest {
+  string room_id = 1;
+  string player_id = 2;
+}
+
+message CloseStreamResponse {
   string message = 1;
 }

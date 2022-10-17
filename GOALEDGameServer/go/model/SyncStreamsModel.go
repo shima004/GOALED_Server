@@ -40,7 +40,9 @@ func (ssm *SyncStreamsModel) RemoveStream(playerId string) {
 	delete(ssm.ObjectStream, playerId)
 	delete(ssm.PlayerDataStream, playerId)
 	for _, done := range ssm.DoneChannels[playerId] {
-		close(done)
+		if done != nil {
+			close(done)
+		}
 	}
 	delete(ssm.DoneChannels, playerId)
 }

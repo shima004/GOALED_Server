@@ -53,6 +53,7 @@ func (ms *MatchingServer) CreatePublicRoom(ctx context.Context, in *pb.CreatePub
 		CurrentPlayer: 0,
 		Players:       make([]*pb.Player, 0),
 	}
+	log.Println("CreatePublicRoom", room.Status, room.CurrentPlayer, room.MaxPlayer, room.Owner)
 	ms.Rooms[room.Id] = room
 	return &pb.CreatePublicRoomResponse{
 		Room: room,
@@ -84,6 +85,7 @@ func (ms *MatchingServer) JoinPublicRoom(ctx context.Context, in *pb.JoinPublicR
 		}, nil
 	}
 	if room.Status != pb.RoomStatus_WAITING || room.CurrentPlayer >= room.MaxPlayer {
+		log.Println(room.Status, room.CurrentPlayer, room.MaxPlayer)
 		return &pb.JoinPublicRoomResponse{
 			Room: nil,
 		}, nil
@@ -123,6 +125,7 @@ func (ms *MatchingServer) LeaveRoom(ctx context.Context, in *pb.LeaveRoomRequest
 			if player.Id == in.GetPlayerId() {
 				room.Players = append(room.Players[:i], room.Players[i+1:]...)
 				room.CurrentPlayer -= 1
+				ms.Streams.RemoveStream(in.GetPlayerId())
 				if room.CurrentPlayer == 0 {
 					delete(ms.Rooms, room.Id)
 				}
@@ -172,6 +175,9 @@ func (ms *MatchingServer) StartGame(ctx context.Context, in *pb.StartGameRequest
 				})
 			})
 		}
+		for _, player := range room.Players {
+			ms.Streams.RemoveStream(player.Id)
+		}
 	}
 	return &pb.StartGameResponse{
 		Success: true,
@@ -183,6 +189,7 @@ func (ms *MatchingServer) GetStartGameStream(in *pb.GetStartGameStreamRequest, s
 	player_id := in.GetPlayerId()
 	ms.Streams.AddGameStartStream(done, player_id, stream)
 	<-done
+	log.Println("GetStartGameStream done")
 	return nil
 }
 
