@@ -30,8 +30,27 @@ message Object{
   Vec3 position = 4;
   Vec3 rotation = 5;
   Vec3 scale = 6;
-  string rpc = 7;
-  map<string, string> args = 8;
+  repeated RPC rpc = 7;
+  repeated AnimatorParam animator_param = 8;
+}
+
+message AnimatorParam {
+  string name = 1;
+  ParamValue value = 2;
+}
+
+message ParamValue {
+  oneof value {
+    float float_value = 1;
+    int32 int_value = 2;
+    bool bool_value = 3;
+    bool trigger_value = 4;
+  }
+}
+
+message RPC {
+  string method = 2;
+  map<string, string> args = 3;
 }
 
 service GameService {
@@ -84,6 +103,7 @@ message SendObjectResponse {
 message CloseStreamRequest {
   string room_id = 1;
   string player_id = 2;
+  repeated Object object = 3;
 }
 
 message CloseStreamResponse {

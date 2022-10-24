@@ -11,16 +11,15 @@ import (
 
 type GameServer struct {
 	pb.UnimplementedGameServiceServer
-	room    map[string]*model.GameModel
-	players map[string]string
+	room map[string]*model.GameModel
 }
 
 func (gs *GameServer) CreateRoom(ctx context.Context, in *pb.Room) (*pb.Room, error) {
-	log.Printf("{\"method\": %s, \"args\": {\"room_id\": %s}}", color.GreenString("[CreateRoom]"), in.Id)
-	for _, player := range in.GetPlayerIds() {
-		gs.players[player] = in.GetId()
+	room_id := in.Id
+	log.Printf("{\"method\": %s, \"args\": {\"room_id\": %s}}", color.GreenString("[CreateRoom]"), room_id)
+	if _, ok := gs.room[room_id]; !ok {
+		gs.room[room_id] = model.NewGameModel(in)
 	}
-	gs.room[in.Id] = model.NewGameModel(in)
 	return in, nil
 }
 
@@ -46,12 +45,15 @@ func (gs *GameServer) SendPlayerData(stream pb.GameService_SendPlayerDataServer)
 		if err != nil {
 			return err
 		}
-		if isFirst {
-			log.Printf("{\"method\": %s, \"args\": {\"room_id\": %s}}", color.GreenString("[SendPlayerData]"), res.RoomId)
-			isFirst = false
-		}
-		if room, ok := gs.room[res.RoomId]; ok {
+		room_id := res.RoomId
+		if room, ok := gs.room[room_id]; ok {
+			if isFirst {
+				log.Printf("{\"method\": %s, \"args\": {\"room_id\": %s}}", color.GreenString("[SendPlayerData]"), room_id)
+				isFirst = false
+			}
 			room.AddPlayerData(res.PlayerData)
+		} else {
+			log.Printf("{\"method\": %s, \"args\": {\"room_id\": %s}}", color.RedString("[SendPlayerData]"), room_id)
 		}
 	}
 }
@@ -78,18 +80,25 @@ func (gs *GameServer) SendObject(stream pb.GameService_SendObjectServer) error {
 		if err != nil {
 			return err
 		}
-		if isFirst {
-			log.Printf("{\"method\": %s, \"args\": {\"room_id\": %s}}", color.GreenString("[SendObject]"), res.RoomId)
-			isFirst = false
+		room_id := res.RoomId
+		if room, ok := gs.room[room_id]; ok {
+			if isFirst {
+				log.Printf("{\"method\": %s, \"args\": {\"room_id\": %s}}", color.GreenString("[SendObject]"), room_id)
+				isFirst = false
+			}
+			room.AddObject(res.Object)
+		} else {
+			log.Printf("{\"method\": %s, \"args\": {\"room_id\": %s}}", color.RedString("[SendObject]"), room_id)
 		}
-		gs.room[res.RoomId].AddObject(res.Object)
 	}
 }
 
 func (gs *GameServer) CloseStream(ctx context.Context, in *pb.CloseStreamRequest) (*pb.CloseStreamResponse, error) {
 	room_id := in.RoomId
 	player_id := in.PlayerId
+	object := in.Object
 	if room, ok := gs.room[room_id]; ok {
+		room.AddObject(object)
 		room.GetStreams().RemoveStream(player_id)
 		log.Printf("{\"method\": %s, \"args\": {\"player_id\": %s, \"room_id\": %s}}", color.GreenString("[CloseStream]"), player_id, room_id)
 		return &pb.CloseStreamResponse{
@@ -105,7 +114,6 @@ func (gs *GameServer) CloseStream(ctx context.Context, in *pb.CloseStreamRequest
 
 func NewGameServer() *GameServer {
 	return &GameServer{
-		room:    make(map[string]*model.GameModel),
-		players: make(map[string]string),
+		room: make(map[string]*model.GameModel),
 	}
 }
