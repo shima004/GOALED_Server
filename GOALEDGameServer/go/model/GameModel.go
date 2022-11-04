@@ -67,3 +67,8 @@ func (gm *GameModel) AddPlayerData(playerData []*pb.PlayerData) {
 func (gm *GameModel) AddObject(object []*pb.Object) {
 	gm.ObjectsChannel <- object
 }
+
+func (gm *GameModel) RemovePlayer(playerId string) bool {
+	gm.streams.RemoveStream(playerId)
+	return gm.streams.IsEmpty()
+}

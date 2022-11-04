@@ -62,3 +62,9 @@ func (ssm *SyncStreamsModel) RangePlayerDataStream(f func(stream pb.GameService_
 		f(stream)
 	}
 }
+
+func (ssm *SyncStreamsModel) IsEmpty() bool {
+	ssm.mux.Lock()
+	defer ssm.mux.Unlock()
+	return len(ssm.ObjectStream) == 0 && len(ssm.PlayerDataStream) == 0
+}

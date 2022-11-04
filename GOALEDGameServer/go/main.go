@@ -5,6 +5,7 @@ import (
 	"log"
 	"net"
 
+	"GOALED/go/interceptor"
 	pb "GOALED/go/pb"
 	service "GOALED/go/service"
 
@@ -33,14 +34,17 @@ func main() {
 	// grpc_zap.ReplaceGrpcLogger(zapLogger)
 
 	grpcServer := grpc.NewServer(
-	// grpc_middleware.WithUnaryServerChain(
-	// 	grpc_ctxtags.UnaryServerInterceptor(grpc_ctxtags.WithFieldExtractor(grpc_ctxtags.CodeGenRequestFieldExtractor)),
-	// 	grpc_zap.UnaryServerInterceptor(zapLogger, opts...),
-	// ),
+		// grpc_middleware.WithUnaryServerChain(
+		// 	grpc_ctxtags.UnaryServerInterceptor(grpc_ctxtags.WithFieldExtractor(grpc_ctxtags.CodeGenRequestFieldExtractor)),
+		// 	grpc_zap.UnaryServerInterceptor(zapLogger, opts...),
+		// ),
+		grpc.StreamInterceptor(interceptor.GameStreamInterceptor),
 	)
 
 	pb.RegisterGameServiceServer(grpcServer, service.NewGameServer())
 	reflection.Register(grpcServer)
+
+	interceptor.PacketSizeAnalysis()
 
 	fmt.Println("Server is running on port 8080")
 	if err := grpcServer.Serve(lis); err != nil {

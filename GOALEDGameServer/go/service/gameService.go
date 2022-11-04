@@ -19,8 +19,10 @@ func (gs *GameServer) CreateRoom(ctx context.Context, in *pb.Room) (*pb.Room, er
 	log.Printf("{\"method\": %s, \"args\": {\"room_id\": %s}}", color.GreenString("[CreateRoom]"), room_id)
 	if _, ok := gs.room[room_id]; !ok {
 		gs.room[room_id] = model.NewGameModel(in)
+		return in, nil
+	} else {
+		return gs.room[room_id].Room, nil
 	}
-	return in, nil
 }
 
 func (gs *GameServer) SyncPlayerData(in *pb.SyncPlayerDataRequest, stream pb.GameService_SyncPlayerDataServer) error {
@@ -99,7 +101,12 @@ func (gs *GameServer) CloseStream(ctx context.Context, in *pb.CloseStreamRequest
 	object := in.Object
 	if room, ok := gs.room[room_id]; ok {
 		room.AddObject(object)
-		room.GetStreams().RemoveStream(player_id)
+		isFinish := room.RemovePlayer(player_id)
+		if isFinish {
+			gs.room[room_id].Close()
+			delete(gs.room, room_id)
+			log.Printf("{\"method\": %s, \"args\": {\"room_id\": %s}}", color.GreenString("[CloseRoom]"), room_id)
+		}
 		log.Printf("{\"method\": %s, \"args\": {\"player_id\": %s, \"room_id\": %s}}", color.GreenString("[CloseStream]"), player_id, room_id)
 		return &pb.CloseStreamResponse{
 			Message: "success",
