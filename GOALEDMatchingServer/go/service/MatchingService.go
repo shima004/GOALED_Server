@@ -71,6 +71,7 @@ func (ms *MatchingServer) CreatePrivateRoom(ctx context.Context, in *pb.CreatePr
 		CurrentPlayer: 0,
 		Players:       make([]*pb.Player, 0),
 	}
+	log.Println("CreatePrivateRoom", room.Status, room.CurrentPlayer, room.MaxPlayer, room.Owner)
 	ms.Rooms[room.Id] = room
 	return &pb.CreatePrivateRoomResponse{
 		Room: room,
@@ -191,6 +192,25 @@ func (ms *MatchingServer) GetStartGameStream(in *pb.GetStartGameStreamRequest, s
 	<-done
 	log.Println("GetStartGameStream done")
 	return nil
+}
+
+func (ms *MatchingServer) GetRoomDetail(ctx context.Context, in *pb.GetRoomDetailRequest) (*pb.GetRoomDetailResponse, error) {
+	if room, ok := ms.Rooms[in.GetRoomId()]; ok {
+		if room.Password == "" {
+			return &pb.GetRoomDetailResponse{
+				Room: room,
+			}, nil
+		} else {
+			if room.Password == in.GetPassword() {
+				return &pb.GetRoomDetailResponse{
+					Room: room,
+				}, nil
+			}
+		}
+	}
+	return &pb.GetRoomDetailResponse{
+		Room: nil,
+	}, nil
 }
 
 func NewMatchingServer() *MatchingServer {

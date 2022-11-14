@@ -36,6 +36,7 @@ service MatchingService {
   rpc LeaveRoom(LeaveRoomRequest) returns (LeaveRoomResponse) {}
   rpc StartGame(StartGameRequest) returns (StartGameResponse) {}
   rpc GetStartGameStream(GetStartGameStreamRequest) returns (stream GetStartGameStreamResponse) {}
+  rpc GetRoomDetail(GetRoomDetailRequest) returns (GetRoomDetailResponse) {}
 }
 
 message GetPlayerIdRequest {
@@ -116,4 +117,13 @@ message GetStartGameStreamRequest {
 
 message GetStartGameStreamResponse {
   bool success = 1;
+}
+
+message GetRoomDetailRequest {
+  string room_id = 1;
+  string password = 2;
+}
+
+message GetRoomDetailResponse {
+  Room room = 1;
 }

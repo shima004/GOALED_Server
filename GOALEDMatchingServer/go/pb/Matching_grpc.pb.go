@@ -31,6 +31,7 @@ type MatchingServiceClient interface {
 	LeaveRoom(ctx context.Context, in *LeaveRoomRequest, opts ...grpc.CallOption) (*LeaveRoomResponse, error)
 	StartGame(ctx context.Context, in *StartGameRequest, opts ...grpc.CallOption) (*StartGameResponse, error)
 	GetStartGameStream(ctx context.Context, in *GetStartGameStreamRequest, opts ...grpc.CallOption) (MatchingService_GetStartGameStreamClient, error)
+	GetRoomDetail(ctx context.Context, in *GetRoomDetailRequest, opts ...grpc.CallOption) (*GetRoomDetailResponse, error)
 }
 
 type matchingServiceClient struct {
@@ -145,6 +146,15 @@ func (x *matchingServiceGetStartGameStreamClient) Recv() (*GetStartGameStreamRes
 	return m, nil
 }
 
+func (c *matchingServiceClient) GetRoomDetail(ctx context.Context, in *GetRoomDetailRequest, opts ...grpc.CallOption) (*GetRoomDetailResponse, error) {
+	out := new(GetRoomDetailResponse)
+	err := c.cc.Invoke(ctx, "/MatchingService.MatchingService/GetRoomDetail", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MatchingServiceServer is the server API for MatchingService service.
 // All implementations must embed UnimplementedMatchingServiceServer
 // for forward compatibility
@@ -158,6 +168,7 @@ type MatchingServiceServer interface {
 	LeaveRoom(context.Context, *LeaveRoomRequest) (*LeaveRoomResponse, error)
 	StartGame(context.Context, *StartGameRequest) (*StartGameResponse, error)
 	GetStartGameStream(*GetStartGameStreamRequest, MatchingService_GetStartGameStreamServer) error
+	GetRoomDetail(context.Context, *GetRoomDetailRequest) (*GetRoomDetailResponse, error)
 	mustEmbedUnimplementedMatchingServiceServer()
 }
 
@@ -191,6 +202,9 @@ func (UnimplementedMatchingServiceServer) StartGame(context.Context, *StartGameR
 }
 func (UnimplementedMatchingServiceServer) GetStartGameStream(*GetStartGameStreamRequest, MatchingService_GetStartGameStreamServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetStartGameStream not implemented")
+}
+func (UnimplementedMatchingServiceServer) GetRoomDetail(context.Context, *GetRoomDetailRequest) (*GetRoomDetailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRoomDetail not implemented")
 }
 func (UnimplementedMatchingServiceServer) mustEmbedUnimplementedMatchingServiceServer() {}
 
@@ -370,6 +384,24 @@ func (x *matchingServiceGetStartGameStreamServer) Send(m *GetStartGameStreamResp
 	return x.ServerStream.SendMsg(m)
 }
 
+func _MatchingService_GetRoomDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRoomDetailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MatchingServiceServer).GetRoomDetail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/MatchingService.MatchingService/GetRoomDetail",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MatchingServiceServer).GetRoomDetail(ctx, req.(*GetRoomDetailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // MatchingService_ServiceDesc is the grpc.ServiceDesc for MatchingService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -408,6 +440,10 @@ var MatchingService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "StartGame",
 			Handler:    _MatchingService_StartGame_Handler,
+		},
+		{
+			MethodName: "GetRoomDetail",
+			Handler:    _MatchingService_GetRoomDetail_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
