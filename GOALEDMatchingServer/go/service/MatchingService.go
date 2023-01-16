@@ -29,7 +29,7 @@ func (ms *MatchingServer) GetPlayerId(ctx context.Context, in *pb.GetPlayerIdReq
 	}, nil
 }
 
-func (ms *MatchingServer) GetPublicRoom(ctx context.Context, in *pb.GetPublicRoomRequest) (*pb.GetPublicRoomResponse, error) {
+func (ms *MatchingServer) GetPublicRooms(ctx context.Context, in *pb.GetPublicRoomsRequest) (*pb.GetPublicRoomsResponse, error) {
 	rooms := make([]*pb.Room, 0)
 	for _, room := range ms.Rooms {
 		if room.Password == "" {
@@ -37,7 +37,7 @@ func (ms *MatchingServer) GetPublicRoom(ctx context.Context, in *pb.GetPublicRoo
 		}
 	}
 
-	return &pb.GetPublicRoomResponse{
+	return &pb.GetPublicRoomsResponse{
 		Rooms: rooms,
 	}, nil
 }
@@ -53,8 +53,8 @@ func (ms *MatchingServer) CreatePublicRoom(ctx context.Context, in *pb.CreatePub
 		CurrentPlayer: 0,
 		Players:       make([]*pb.Player, 0),
 	}
-	log.Println("CreatePublicRoom", room.Status, room.CurrentPlayer, room.MaxPlayer, room.Owner)
 	ms.Rooms[room.Id] = room
+	log.Println("CreatePublicRoom", room.Status, room.CurrentPlayer, room.MaxPlayer, room.Owner)
 	return &pb.CreatePublicRoomResponse{
 		Room: room,
 	}, nil
@@ -71,8 +71,8 @@ func (ms *MatchingServer) CreatePrivateRoom(ctx context.Context, in *pb.CreatePr
 		CurrentPlayer: 0,
 		Players:       make([]*pb.Player, 0),
 	}
-	log.Println("CreatePrivateRoom", room.Status, room.CurrentPlayer, room.MaxPlayer, room.Owner)
 	ms.Rooms[room.Id] = room
+	log.Println("CreatePrivateRoom", room.Status, room.CurrentPlayer, room.MaxPlayer, room.Owner)
 	return &pb.CreatePrivateRoomResponse{
 		Room: room,
 	}, nil

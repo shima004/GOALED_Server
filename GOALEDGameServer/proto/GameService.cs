@@ -28,53 +28,53 @@ namespace GameService {
             "YRIKCgJpZBgBIAEoCRILCgNrZXkYAiADKAkSDQoFdmFsdWUYAyADKAkiQwoE",
             "Um9vbRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEg0KBW93bmVyGAMgASgJ",
             "EhIKCnBsYXllcl9pZHMYBCADKAkiJwoEVmVjMxIJCgF4GAEgASgCEgkKAXkY",
-            "AiABKAISCQoBehgDIAEoAiLyAQoGT2JqZWN0EgoKAmlkGAEgASgJEg0KBW93",
+            "AiABKAISCQoBehgDIAEoAiKKAgoGT2JqZWN0EgoKAmlkGAEgASgJEg0KBW93",
             "bmVyGAIgASgJEg4KBnByZWZ1YhgDIAEoCRIjCghwb3NpdGlvbhgEIAEoCzIR",
             "LkdhbWVTZXJ2aWNlLlZlYzMSIwoIcm90YXRpb24YBSABKAsyES5HYW1lU2Vy",
-            "dmljZS5WZWMzEiAKBXNjYWxlGAYgASgLMhEuR2FtZVNlcnZpY2UuVmVjMxId",
-            "CgNycGMYByADKAsyEC5HYW1lU2VydmljZS5SUEMSMgoOYW5pbWF0b3JfcGFy",
-            "YW0YCCADKAsyGi5HYW1lU2VydmljZS5BbmltYXRvclBhcmFtIkUKDUFuaW1h",
-            "dG9yUGFyYW0SDAoEbmFtZRgBIAEoCRImCgV2YWx1ZRgCIAEoCzIXLkdhbWVT",
-            "ZXJ2aWNlLlBhcmFtVmFsdWUicAoKUGFyYW1WYWx1ZRIVCgtmbG9hdF92YWx1",
-            "ZRgBIAEoAkgAEhMKCWludF92YWx1ZRgCIAEoBUgAEhQKCmJvb2xfdmFsdWUY",
-            "AyABKAhIABIXCg10cmlnZ2VyX3ZhbHVlGAQgASgISABCBwoFdmFsdWUibAoD",
-            "UlBDEg4KBm1ldGhvZBgCIAEoCRIoCgRhcmdzGAMgAygLMhouR2FtZVNlcnZp",
-            "Y2UuUlBDLkFyZ3NFbnRyeRorCglBcmdzRW50cnkSCwoDa2V5GAEgASgJEg0K",
-            "BXZhbHVlGAIgASgJOgI4ASI7ChVTeW5jUGxheWVyRGF0YVJlcXVlc3QSDwoH",
-            "cm9vbV9pZBgBIAEoCRIRCglwbGF5ZXJfaWQYAiABKAkiRgoWU3luY1BsYXll",
-            "ckRhdGFSZXNwb25zZRIsCgtwbGF5ZXJfZGF0YRgBIAMoCzIXLkdhbWVTZXJ2",
-            "aWNlLlBsYXllckRhdGEiVgoVU2VuZFBsYXllckRhdGFSZXF1ZXN0Eg8KB3Jv",
-            "b21faWQYASABKAkSLAoLcGxheWVyX2RhdGEYAiADKAsyFy5HYW1lU2Vydmlj",
-            "ZS5QbGF5ZXJEYXRhIlIKFlNlbmRQbGF5ZXJEYXRhUmVzcG9uc2USEQoJcGxh",
-            "eWVyX2lkGAEgASgJEiUKBGRhdGEYAiABKAsyFy5HYW1lU2VydmljZS5QbGF5",
-            "ZXJEYXRhIjcKEVN5bmNPYmplY3RSZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkS",
-            "EQoJcGxheWVyX2lkGAIgASgJIjkKElN5bmNPYmplY3RSZXNwb25zZRIjCgZv",
-            "YmplY3QYASADKAsyEy5HYW1lU2VydmljZS5PYmplY3QiXAoRU2VuZE9iamVj",
-            "dFJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIRCglwbGF5ZXJfaWQYAiABKAkS",
-            "IwoGb2JqZWN0GAMgAygLMhMuR2FtZVNlcnZpY2UuT2JqZWN0IiUKElNlbmRP",
-            "YmplY3RSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIl0KEkNsb3NlU3RyZWFt",
-            "UmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEhEKCXBsYXllcl9pZBgCIAEoCRIj",
-            "CgZvYmplY3QYAyADKAsyEy5HYW1lU2VydmljZS5PYmplY3QiJgoTQ2xvc2VT",
-            "dHJlYW1SZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJMvsDCgtHYW1lU2Vydmlj",
-            "ZRI0CgpDcmVhdGVSb29tEhEuR2FtZVNlcnZpY2UuUm9vbRoRLkdhbWVTZXJ2",
-            "aWNlLlJvb20iABJdCg5TeW5jUGxheWVyRGF0YRIiLkdhbWVTZXJ2aWNlLlN5",
-            "bmNQbGF5ZXJEYXRhUmVxdWVzdBojLkdhbWVTZXJ2aWNlLlN5bmNQbGF5ZXJE",
-            "YXRhUmVzcG9uc2UiADABEl0KDlNlbmRQbGF5ZXJEYXRhEiIuR2FtZVNlcnZp",
-            "Y2UuU2VuZFBsYXllckRhdGFSZXF1ZXN0GiMuR2FtZVNlcnZpY2UuU2VuZFBs",
-            "YXllckRhdGFSZXNwb25zZSIAKAESUQoKU3luY09iamVjdBIeLkdhbWVTZXJ2",
-            "aWNlLlN5bmNPYmplY3RSZXF1ZXN0Gh8uR2FtZVNlcnZpY2UuU3luY09iamVj",
-            "dFJlc3BvbnNlIgAwARJRCgpTZW5kT2JqZWN0Eh4uR2FtZVNlcnZpY2UuU2Vu",
-            "ZE9iamVjdFJlcXVlc3QaHy5HYW1lU2VydmljZS5TZW5kT2JqZWN0UmVzcG9u",
-            "c2UiACgBElIKC0Nsb3NlU3RyZWFtEh8uR2FtZVNlcnZpY2UuQ2xvc2VTdHJl",
-            "YW1SZXF1ZXN0GiAuR2FtZVNlcnZpY2UuQ2xvc2VTdHJlYW1SZXNwb25zZSIA",
-            "QgpaCC4uL2dvL3BiYgZwcm90bzM="));
+            "dmljZS5WZWMzEiAKBXNjYWxlGAYgASgLMhEuR2FtZVNlcnZpY2UuVmVjMxIW",
+            "Cg5pc19yb29tX29iamVjdBgHIAEoCBIdCgNycGMYCCADKAsyEC5HYW1lU2Vy",
+            "dmljZS5SUEMSMgoOYW5pbWF0b3JfcGFyYW0YCSADKAsyGi5HYW1lU2Vydmlj",
+            "ZS5BbmltYXRvclBhcmFtIkUKDUFuaW1hdG9yUGFyYW0SDAoEbmFtZRgBIAEo",
+            "CRImCgV2YWx1ZRgCIAEoCzIXLkdhbWVTZXJ2aWNlLlBhcmFtVmFsdWUicAoK",
+            "UGFyYW1WYWx1ZRIVCgtmbG9hdF92YWx1ZRgBIAEoAkgAEhMKCWludF92YWx1",
+            "ZRgCIAEoBUgAEhQKCmJvb2xfdmFsdWUYAyABKAhIABIXCg10cmlnZ2VyX3Zh",
+            "bHVlGAQgASgISABCBwoFdmFsdWUibAoDUlBDEg4KBm1ldGhvZBgCIAEoCRIo",
+            "CgRhcmdzGAMgAygLMhouR2FtZVNlcnZpY2UuUlBDLkFyZ3NFbnRyeRorCglB",
+            "cmdzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASI7ChVT",
+            "eW5jUGxheWVyRGF0YVJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIRCglwbGF5",
+            "ZXJfaWQYAiABKAkiRgoWU3luY1BsYXllckRhdGFSZXNwb25zZRIsCgtwbGF5",
+            "ZXJfZGF0YRgBIAMoCzIXLkdhbWVTZXJ2aWNlLlBsYXllckRhdGEiVgoVU2Vu",
+            "ZFBsYXllckRhdGFSZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSLAoLcGxheWVy",
+            "X2RhdGEYAiADKAsyFy5HYW1lU2VydmljZS5QbGF5ZXJEYXRhIlIKFlNlbmRQ",
+            "bGF5ZXJEYXRhUmVzcG9uc2USEQoJcGxheWVyX2lkGAEgASgJEiUKBGRhdGEY",
+            "AiABKAsyFy5HYW1lU2VydmljZS5QbGF5ZXJEYXRhIjcKEVN5bmNPYmplY3RS",
+            "ZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSEQoJcGxheWVyX2lkGAIgASgJIjkK",
+            "ElN5bmNPYmplY3RSZXNwb25zZRIjCgZvYmplY3QYASADKAsyEy5HYW1lU2Vy",
+            "dmljZS5PYmplY3QiXAoRU2VuZE9iamVjdFJlcXVlc3QSDwoHcm9vbV9pZBgB",
+            "IAEoCRIRCglwbGF5ZXJfaWQYAiABKAkSIwoGb2JqZWN0GAMgAygLMhMuR2Ft",
+            "ZVNlcnZpY2UuT2JqZWN0IiUKElNlbmRPYmplY3RSZXNwb25zZRIPCgdtZXNz",
+            "YWdlGAEgASgJIl0KEkNsb3NlU3RyZWFtUmVxdWVzdBIPCgdyb29tX2lkGAEg",
+            "ASgJEhEKCXBsYXllcl9pZBgCIAEoCRIjCgZvYmplY3QYAyADKAsyEy5HYW1l",
+            "U2VydmljZS5PYmplY3QiJgoTQ2xvc2VTdHJlYW1SZXNwb25zZRIPCgdtZXNz",
+            "YWdlGAEgASgJMvsDCgtHYW1lU2VydmljZRI0CgpDcmVhdGVSb29tEhEuR2Ft",
+            "ZVNlcnZpY2UuUm9vbRoRLkdhbWVTZXJ2aWNlLlJvb20iABJdCg5TeW5jUGxh",
+            "eWVyRGF0YRIiLkdhbWVTZXJ2aWNlLlN5bmNQbGF5ZXJEYXRhUmVxdWVzdBoj",
+            "LkdhbWVTZXJ2aWNlLlN5bmNQbGF5ZXJEYXRhUmVzcG9uc2UiADABEl0KDlNl",
+            "bmRQbGF5ZXJEYXRhEiIuR2FtZVNlcnZpY2UuU2VuZFBsYXllckRhdGFSZXF1",
+            "ZXN0GiMuR2FtZVNlcnZpY2UuU2VuZFBsYXllckRhdGFSZXNwb25zZSIAKAES",
+            "UQoKU3luY09iamVjdBIeLkdhbWVTZXJ2aWNlLlN5bmNPYmplY3RSZXF1ZXN0",
+            "Gh8uR2FtZVNlcnZpY2UuU3luY09iamVjdFJlc3BvbnNlIgAwARJRCgpTZW5k",
+            "T2JqZWN0Eh4uR2FtZVNlcnZpY2UuU2VuZE9iamVjdFJlcXVlc3QaHy5HYW1l",
+            "U2VydmljZS5TZW5kT2JqZWN0UmVzcG9uc2UiACgBElIKC0Nsb3NlU3RyZWFt",
+            "Eh8uR2FtZVNlcnZpY2UuQ2xvc2VTdHJlYW1SZXF1ZXN0GiAuR2FtZVNlcnZp",
+            "Y2UuQ2xvc2VTdHJlYW1SZXNwb25zZSIAQgpaCC4uL2dvL3BiYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::GameService.PlayerData), global::GameService.PlayerData.Parser, new[]{ "Id", "Key", "Value" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GameService.Room), global::GameService.Room.Parser, new[]{ "Id", "Name", "Owner", "PlayerIds" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GameService.Vec3), global::GameService.Vec3.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GameService.Object), global::GameService.Object.Parser, new[]{ "Id", "Owner", "Prefub", "Position", "Rotation", "Scale", "Rpc", "AnimatorParam" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GameService.Object), global::GameService.Object.Parser, new[]{ "Id", "Owner", "Prefub", "Position", "Rotation", "Scale", "IsRoomObject", "Rpc", "AnimatorParam" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GameService.AnimatorParam), global::GameService.AnimatorParam.Parser, new[]{ "Name", "Value" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GameService.ParamValue), global::GameService.ParamValue.Parser, new[]{ "FloatValue", "IntValue", "BoolValue", "TriggerValue" }, new[]{ "Value" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GameService.RPC), global::GameService.RPC.Parser, new[]{ "Method", "Args" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
@@ -927,6 +927,7 @@ namespace GameService {
       position_ = other.position_ != null ? other.position_.Clone() : null;
       rotation_ = other.rotation_ != null ? other.rotation_.Clone() : null;
       scale_ = other.scale_ != null ? other.scale_.Clone() : null;
+      isRoomObject_ = other.isRoomObject_;
       rpc_ = other.rpc_.Clone();
       animatorParam_ = other.animatorParam_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1010,10 +1011,22 @@ namespace GameService {
       }
     }
 
+    /// <summary>Field number for the "is_room_object" field.</summary>
+    public const int IsRoomObjectFieldNumber = 7;
+    private bool isRoomObject_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsRoomObject {
+      get { return isRoomObject_; }
+      set {
+        isRoomObject_ = value;
+      }
+    }
+
     /// <summary>Field number for the "rpc" field.</summary>
-    public const int RpcFieldNumber = 7;
+    public const int RpcFieldNumber = 8;
     private static readonly pb::FieldCodec<global::GameService.RPC> _repeated_rpc_codec
-        = pb::FieldCodec.ForMessage(58, global::GameService.RPC.Parser);
+        = pb::FieldCodec.ForMessage(66, global::GameService.RPC.Parser);
     private readonly pbc::RepeatedField<global::GameService.RPC> rpc_ = new pbc::RepeatedField<global::GameService.RPC>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1022,9 +1035,9 @@ namespace GameService {
     }
 
     /// <summary>Field number for the "animator_param" field.</summary>
-    public const int AnimatorParamFieldNumber = 8;
+    public const int AnimatorParamFieldNumber = 9;
     private static readonly pb::FieldCodec<global::GameService.AnimatorParam> _repeated_animatorParam_codec
-        = pb::FieldCodec.ForMessage(66, global::GameService.AnimatorParam.Parser);
+        = pb::FieldCodec.ForMessage(74, global::GameService.AnimatorParam.Parser);
     private readonly pbc::RepeatedField<global::GameService.AnimatorParam> animatorParam_ = new pbc::RepeatedField<global::GameService.AnimatorParam>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1053,6 +1066,7 @@ namespace GameService {
       if (!object.Equals(Position, other.Position)) return false;
       if (!object.Equals(Rotation, other.Rotation)) return false;
       if (!object.Equals(Scale, other.Scale)) return false;
+      if (IsRoomObject != other.IsRoomObject) return false;
       if(!rpc_.Equals(other.rpc_)) return false;
       if(!animatorParam_.Equals(other.animatorParam_)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1068,6 +1082,7 @@ namespace GameService {
       if (position_ != null) hash ^= Position.GetHashCode();
       if (rotation_ != null) hash ^= Rotation.GetHashCode();
       if (scale_ != null) hash ^= Scale.GetHashCode();
+      if (IsRoomObject != false) hash ^= IsRoomObject.GetHashCode();
       hash ^= rpc_.GetHashCode();
       hash ^= animatorParam_.GetHashCode();
       if (_unknownFields != null) {
@@ -1112,6 +1127,10 @@ namespace GameService {
         output.WriteRawTag(50);
         output.WriteMessage(Scale);
       }
+      if (IsRoomObject != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsRoomObject);
+      }
       rpc_.WriteTo(output, _repeated_rpc_codec);
       animatorParam_.WriteTo(output, _repeated_animatorParam_codec);
       if (_unknownFields != null) {
@@ -1148,6 +1167,10 @@ namespace GameService {
         output.WriteRawTag(50);
         output.WriteMessage(Scale);
       }
+      if (IsRoomObject != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsRoomObject);
+      }
       rpc_.WriteTo(ref output, _repeated_rpc_codec);
       animatorParam_.WriteTo(ref output, _repeated_animatorParam_codec);
       if (_unknownFields != null) {
@@ -1177,6 +1200,9 @@ namespace GameService {
       }
       if (scale_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Scale);
+      }
+      if (IsRoomObject != false) {
+        size += 1 + 1;
       }
       size += rpc_.CalculateSize(_repeated_rpc_codec);
       size += animatorParam_.CalculateSize(_repeated_animatorParam_codec);
@@ -1218,6 +1244,9 @@ namespace GameService {
           Scale = new global::GameService.Vec3();
         }
         Scale.MergeFrom(other.Scale);
+      }
+      if (other.IsRoomObject != false) {
+        IsRoomObject = other.IsRoomObject;
       }
       rpc_.Add(other.rpc_);
       animatorParam_.Add(other.animatorParam_);
@@ -1269,11 +1298,15 @@ namespace GameService {
             input.ReadMessage(Scale);
             break;
           }
-          case 58: {
-            rpc_.AddEntriesFrom(input, _repeated_rpc_codec);
+          case 56: {
+            IsRoomObject = input.ReadBool();
             break;
           }
           case 66: {
+            rpc_.AddEntriesFrom(input, _repeated_rpc_codec);
+            break;
+          }
+          case 74: {
             animatorParam_.AddEntriesFrom(input, _repeated_animatorParam_codec);
             break;
           }
@@ -1325,11 +1358,15 @@ namespace GameService {
             input.ReadMessage(Scale);
             break;
           }
-          case 58: {
-            rpc_.AddEntriesFrom(ref input, _repeated_rpc_codec);
+          case 56: {
+            IsRoomObject = input.ReadBool();
             break;
           }
           case 66: {
+            rpc_.AddEntriesFrom(ref input, _repeated_rpc_codec);
+            break;
+          }
+          case 74: {
             animatorParam_.AddEntriesFrom(ref input, _repeated_animatorParam_codec);
             break;
           }

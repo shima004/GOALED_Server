@@ -23,7 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MatchingServiceClient interface {
 	GetPlayerId(ctx context.Context, in *GetPlayerIdRequest, opts ...grpc.CallOption) (*GetPlayerIdResponse, error)
-	GetPublicRoom(ctx context.Context, in *GetPublicRoomRequest, opts ...grpc.CallOption) (*GetPublicRoomResponse, error)
+	GetPublicRooms(ctx context.Context, in *GetPublicRoomsRequest, opts ...grpc.CallOption) (*GetPublicRoomsResponse, error)
 	CreatePublicRoom(ctx context.Context, in *CreatePublicRoomRequest, opts ...grpc.CallOption) (*CreatePublicRoomResponse, error)
 	CreatePrivateRoom(ctx context.Context, in *CreatePrivateRoomRequest, opts ...grpc.CallOption) (*CreatePrivateRoomResponse, error)
 	JoinPublicRoom(ctx context.Context, in *JoinPublicRoomRequest, opts ...grpc.CallOption) (*JoinPublicRoomResponse, error)
@@ -51,9 +51,9 @@ func (c *matchingServiceClient) GetPlayerId(ctx context.Context, in *GetPlayerId
 	return out, nil
 }
 
-func (c *matchingServiceClient) GetPublicRoom(ctx context.Context, in *GetPublicRoomRequest, opts ...grpc.CallOption) (*GetPublicRoomResponse, error) {
-	out := new(GetPublicRoomResponse)
-	err := c.cc.Invoke(ctx, "/MatchingService.MatchingService/GetPublicRoom", in, out, opts...)
+func (c *matchingServiceClient) GetPublicRooms(ctx context.Context, in *GetPublicRoomsRequest, opts ...grpc.CallOption) (*GetPublicRoomsResponse, error) {
+	out := new(GetPublicRoomsResponse)
+	err := c.cc.Invoke(ctx, "/MatchingService.MatchingService/GetPublicRooms", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -160,7 +160,7 @@ func (c *matchingServiceClient) GetRoomDetail(ctx context.Context, in *GetRoomDe
 // for forward compatibility
 type MatchingServiceServer interface {
 	GetPlayerId(context.Context, *GetPlayerIdRequest) (*GetPlayerIdResponse, error)
-	GetPublicRoom(context.Context, *GetPublicRoomRequest) (*GetPublicRoomResponse, error)
+	GetPublicRooms(context.Context, *GetPublicRoomsRequest) (*GetPublicRoomsResponse, error)
 	CreatePublicRoom(context.Context, *CreatePublicRoomRequest) (*CreatePublicRoomResponse, error)
 	CreatePrivateRoom(context.Context, *CreatePrivateRoomRequest) (*CreatePrivateRoomResponse, error)
 	JoinPublicRoom(context.Context, *JoinPublicRoomRequest) (*JoinPublicRoomResponse, error)
@@ -179,8 +179,8 @@ type UnimplementedMatchingServiceServer struct {
 func (UnimplementedMatchingServiceServer) GetPlayerId(context.Context, *GetPlayerIdRequest) (*GetPlayerIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlayerId not implemented")
 }
-func (UnimplementedMatchingServiceServer) GetPublicRoom(context.Context, *GetPublicRoomRequest) (*GetPublicRoomResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPublicRoom not implemented")
+func (UnimplementedMatchingServiceServer) GetPublicRooms(context.Context, *GetPublicRoomsRequest) (*GetPublicRoomsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPublicRooms not implemented")
 }
 func (UnimplementedMatchingServiceServer) CreatePublicRoom(context.Context, *CreatePublicRoomRequest) (*CreatePublicRoomResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePublicRoom not implemented")
@@ -237,20 +237,20 @@ func _MatchingService_GetPlayerId_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MatchingService_GetPublicRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPublicRoomRequest)
+func _MatchingService_GetPublicRooms_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPublicRoomsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MatchingServiceServer).GetPublicRoom(ctx, in)
+		return srv.(MatchingServiceServer).GetPublicRooms(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/MatchingService.MatchingService/GetPublicRoom",
+		FullMethod: "/MatchingService.MatchingService/GetPublicRooms",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MatchingServiceServer).GetPublicRoom(ctx, req.(*GetPublicRoomRequest))
+		return srv.(MatchingServiceServer).GetPublicRooms(ctx, req.(*GetPublicRoomsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -414,8 +414,8 @@ var MatchingService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _MatchingService_GetPlayerId_Handler,
 		},
 		{
-			MethodName: "GetPublicRoom",
-			Handler:    _MatchingService_GetPublicRoom_Handler,
+			MethodName: "GetPublicRooms",
+			Handler:    _MatchingService_GetPublicRooms_Handler,
 		},
 		{
 			MethodName: "CreatePublicRoom",

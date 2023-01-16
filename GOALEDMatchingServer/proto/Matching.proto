@@ -28,7 +28,7 @@ message Room {
 
 service MatchingService {
   rpc GetPlayerId (GetPlayerIdRequest) returns (GetPlayerIdResponse) {}
-  rpc GetPublicRoom(GetPublicRoomRequest) returns (GetPublicRoomResponse) {}
+  rpc GetPublicRooms(GetPublicRoomsRequest) returns (GetPublicRoomsResponse) {}
   rpc CreatePublicRoom(CreatePublicRoomRequest) returns (CreatePublicRoomResponse) {}
   rpc CreatePrivateRoom(CreatePrivateRoomRequest) returns (CreatePrivateRoomResponse) {}
   rpc JoinPublicRoom(JoinPublicRoomRequest) returns (JoinPublicRoomResponse) {}
@@ -46,10 +46,10 @@ message GetPlayerIdResponse {
   string player_id = 1;
 }
 
-message GetPublicRoomRequest {
+message GetPublicRoomsRequest {
 }
 
-message GetPublicRoomResponse {
+message GetPublicRoomsResponse {
   repeated Room rooms = 1;
 }
 

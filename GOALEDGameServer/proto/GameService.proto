@@ -30,8 +30,9 @@ message Object{
   Vec3 position = 4;
   Vec3 rotation = 5;
   Vec3 scale = 6;
-  repeated RPC rpc = 7;
-  repeated AnimatorParam animator_param = 8;
+  bool is_room_object = 7;
+  repeated RPC rpc = 8;
+  repeated AnimatorParam animator_param = 9;
 }
 
 message AnimatorParam {
